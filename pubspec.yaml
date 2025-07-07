@@ -1,0 +1,25 @@
+name: user_registration_form
+description: A modern Flutter form application for user registration.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+flutter:
+  uses-material-design: true
+  
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" sublist
+  # including the asset and other descriptors for the font.
+  # For details on adding fonts, see
+  # https://flutter.dev/custom-fonts/#from-packages
