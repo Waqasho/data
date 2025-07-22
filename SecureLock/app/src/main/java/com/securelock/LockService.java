@@ -25,7 +25,9 @@ import java.util.TimerTask;
 public class LockService extends Service {
     private static final String TAG = "LockService";
     private static final String CHANNEL_ID = "SecureLockChannel";
+    private static final String BACKGROUND_CHANNEL_ID = "SecureLockBackgroundChannel";
     private static final int NOTIFICATION_ID = 1001;
+    private static final int BACKGROUND_NOTIFICATION_ID = 1002;
     
     private DevicePolicyManager dpm;
     private ComponentName compName;
@@ -34,6 +36,7 @@ public class LockService extends Service {
     private Handler handler;
     private boolean isLockActive = false;
     private String scheduleLabel = "SecureLock";
+    private NotificationManager notificationManager;
     
     // Broadcast receiver for screen unlock events
     private BroadcastReceiver screenReceiver = new BroadcastReceiver() {
@@ -61,6 +64,7 @@ public class LockService extends Service {
         dpm = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
         compName = new ComponentName(this, MyDeviceAdminReceiver.class);
         handler = new Handler(Looper.getMainLooper());
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         
         // Register screen unlock receiver
         IntentFilter filter = new IntentFilter();
@@ -69,6 +73,10 @@ public class LockService extends Service {
         registerReceiver(screenReceiver, filter);
         
         createNotificationChannel();
+        createBackgroundNotificationChannel();
+        
+        // Start foreground service with persistent notification
+        startForeground(BACKGROUND_NOTIFICATION_ID, createBackgroundNotification());
     }
     
     @Override
@@ -170,7 +178,7 @@ public class LockService extends Service {
         int remainingMinutes = (int) (remainingTime / (60 * 1000));
         int remainingSeconds = (int) ((remainingTime % (60 * 1000)) / 1000);
         
-        NotificationManager notificationManager = 
+        notificationManager = 
             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         
         notificationManager.notify(NOTIFICATION_ID, 
@@ -200,7 +208,7 @@ public class LockService extends Service {
         }
         
         // Remove notification
-        NotificationManager notificationManager = 
+        notificationManager = 
             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(NOTIFICATION_ID);
         
@@ -237,7 +245,7 @@ public class LockService extends Service {
     }
     
     private void showScheduleStartNotification(int durationMinutes) {
-        NotificationManager notificationManager = 
+        notificationManager = 
             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         
         Notification startNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
@@ -252,7 +260,7 @@ public class LockService extends Service {
     }
     
     private void showCompletionNotification() {
-        NotificationManager notificationManager = 
+        notificationManager = 
             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         
         Notification completionNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
@@ -279,6 +287,40 @@ public class LockService extends Service {
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+    
+    private void createBackgroundNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                BACKGROUND_CHANNEL_ID,
+                "SecureLock Background Service",
+                NotificationManager.IMPORTANCE_LOW
+            );
+            channel.setDescription("Shows that SecureLock is running in background");
+            channel.setSound(null, null);
+            channel.enableVibration(false);
+            
+            NotificationManager notificationManager = 
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+    
+    private Notification createBackgroundNotification() {
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent,
+            PendingIntent.FLAG_IMMUTABLE);
+        
+        return new NotificationCompat.Builder(this, BACKGROUND_CHANNEL_ID)
+            .setContentTitle("SecureLock")
+            .setContentText("App running background")
+            .setSmallIcon(android.R.drawable.ic_lock_lock)
+            .setContentIntent(pendingIntent)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setCategory(NotificationCompat.CATEGORY_SERVICE)
+            .setShowWhen(false)
+            .build();
     }
     
     @Override

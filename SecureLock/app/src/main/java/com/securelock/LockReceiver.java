@@ -16,7 +16,9 @@ public class LockReceiver extends BroadcastReceiver {
     
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.d(TAG, "=== LockReceiver onReceive ===");
         Log.d(TAG, "Received intent: " + intent.getAction());
+        Log.d(TAG, "Intent extras: " + intent.getExtras());
         
         DevicePolicyManager dpm = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
         SharedPreferences prefs = context.getSharedPreferences("SecureLockPrefs", Context.MODE_PRIVATE);
@@ -25,27 +27,32 @@ public class LockReceiver extends BroadcastReceiver {
         String day = intent.getStringExtra("day");
         int hour = intent.getIntExtra("hour", 0);
         int minute = intent.getIntExtra("minute", 0);
-        int duration = intent.getIntExtra("duration", 0);
+        boolean isLock = intent.getBooleanExtra("isLock", true);
         
-        Log.d(TAG, "Action: " + action + ", Day: " + day + ", Hour: " + hour + ", Minute: " + minute);
-        Log.d(TAG, "Current time: " + System.currentTimeMillis());
+        Log.d(TAG, "Action: " + action + ", Day: " + day + ", Hour: " + hour + ", Minute: " + minute + ", IsLock: " + isLock);
+        Log.d(TAG, "Current time: " + new java.util.Date());
         Log.d(TAG, "Device admin active: " + dpm.isAdminActive(new ComponentName(context, MyDeviceAdminReceiver.class)));
         
         if ("com.securelock.LOCK_DEVICE".equals(action)) {
             ComponentName compName = new ComponentName(context, MyDeviceAdminReceiver.class);
-            Log.d(TAG, "Checking device admin status...");
+            Log.d(TAG, "Processing LOCK_DEVICE action...");
+            
             if (dpm.isAdminActive(compName)) {
-                Log.d(TAG, "Device admin active, starting lock service...");
+                Log.d(TAG, "Device admin active, processing lock request...");
                 
-                // Find the schedule that matches this day and current time
+                // Find the schedule that matches this day and time
                 int scheduleCount = prefs.getInt("schedule_count", 0);
                 Log.d(TAG, "Total schedules found: " + scheduleCount);
                 
-                // Try to find matching schedule first
                 boolean scheduleFound = false;
+                int lockDurationMinutes = 5; // Default duration
+                String scheduleLabel = "SecureLock";
+                
                 for (int i = 0; i < scheduleCount; i++) {
                     String prefix = "schedule_" + i + "_";
                     Set<String> scheduleDays = prefs.getStringSet(prefix + "days", null);
+                    
+                    Log.d(TAG, "Checking schedule " + i + ": " + scheduleDays);
                     
                     if (scheduleDays != null && !scheduleDays.isEmpty() && scheduleDays.contains(day)) {
                         // This schedule matches the day, get its times
@@ -53,61 +60,51 @@ public class LockReceiver extends BroadcastReceiver {
                         int startMinute = prefs.getInt(prefix + "start_minute", 0);
                         int endHour = prefs.getInt(prefix + "end_hour", 17);
                         int endMinute = prefs.getInt(prefix + "end_minute", 0);
-                        String label = prefs.getString(prefix + "label", "Scheduled Lock");
+                        String label = prefs.getString(prefix + "label", "SecureLock");
                         
-                        Log.d(TAG, "Found matching schedule " + i + ": " + label);
-                        Log.d(TAG, "Schedule times: " + startHour + ":" + startMinute + " to " + endHour + ":" + endMinute);
+                        Log.d(TAG, "Schedule " + i + " times: " + startHour + ":" + String.format("%02d", startMinute) + 
+                              " to " + endHour + ":" + String.format("%02d", endMinute));
                         
-                        // Calculate duration in minutes
-                        int startTotalMinutes = startHour * 60 + startMinute;
-                        int endTotalMinutes = endHour * 60 + endMinute;
-                        int durationMinutes = endTotalMinutes - startTotalMinutes;
-                        
-                        if (durationMinutes <= 0) {
-                            durationMinutes += 24 * 60; // Add 24 hours if end time is next day
+                        // Check if current alarm matches this schedule's start time
+                        if (hour == startHour && minute == startMinute) {
+                            // Calculate duration in minutes
+                            int startTotalMinutes = startHour * 60 + startMinute;
+                            int endTotalMinutes = endHour * 60 + endMinute;
+                            
+                            if (endTotalMinutes > startTotalMinutes) {
+                                lockDurationMinutes = endTotalMinutes - startTotalMinutes;
+                            } else {
+                                // Handle overnight schedules (end time is next day)
+                                lockDurationMinutes = (24 * 60 - startTotalMinutes) + endTotalMinutes;
+                            }
+                            
+                            scheduleLabel = label;
+                            scheduleFound = true;
+                            Log.d(TAG, "Found matching schedule! Duration: " + lockDurationMinutes + " minutes, Label: " + scheduleLabel);
+                            break;
                         }
-                        
-                        Log.d(TAG, "Found matching schedule: " + label + " for " + durationMinutes + " minutes");
-                        
-                        // Start the lock service
-                        Intent serviceIntent = new Intent(context, LockService.class);
-                        serviceIntent.putExtra("duration", durationMinutes);
-                        serviceIntent.putExtra("schedule_label", label);
-                        
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                            context.startForegroundService(serviceIntent);
-                        } else {
-                            context.startService(serviceIntent);
-                        }
-                        
-                        Log.d(TAG, "Lock service started for " + durationMinutes + " minutes!");
-                        Toast.makeText(context, "Schedule '" + label + "' activated! Device locked for " + durationMinutes + " minutes!", Toast.LENGTH_SHORT).show();
-                        scheduleFound = true;
-                        break;
                     }
                 }
                 
-                // If no specific schedule found, use default lock
-                if (!scheduleFound) {
-                    Log.d(TAG, "No matching schedule found, using default lock");
+                if (scheduleFound || day != null) {
+                    // Start lock service with calculated duration
+                    Intent lockIntent = new Intent(context, LockService.class);
+                    lockIntent.putExtra("duration", lockDurationMinutes);
+                    lockIntent.putExtra("schedule_label", scheduleLabel);
                     
-                    // Use default 8-hour lock (9 AM to 5 PM)
-                    int durationMinutes = 8 * 60; // 8 hours
-                    String label = "Default Lock";
+                    Log.d(TAG, "Starting LockService with duration: " + lockDurationMinutes + " minutes");
                     
-                    // Start the lock service
-                    Intent serviceIntent = new Intent(context, LockService.class);
-                    serviceIntent.putExtra("duration", durationMinutes);
-                    serviceIntent.putExtra("schedule_label", label);
-                    
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        context.startForegroundService(serviceIntent);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        context.startForegroundService(lockIntent);
                     } else {
-                        context.startService(serviceIntent);
+                        context.startService(lockIntent);
                     }
                     
-                    Log.d(TAG, "Default lock service started for " + durationMinutes + " minutes!");
-                    Toast.makeText(context, "Default lock activated! Device locked for " + durationMinutes + " minutes!", Toast.LENGTH_SHORT).show();
+                    // Show toast notification
+                    Toast.makeText(context, "🔒 " + scheduleLabel + " activated for " + lockDurationMinutes + " minutes", 
+                                 Toast.LENGTH_LONG).show();
+                } else {
+                    Log.w(TAG, "No matching schedule found for day: " + day + ", time: " + hour + ":" + minute);
                 }
             } else {
                 Log.e(TAG, "Device admin not active!");

@@ -346,6 +346,7 @@ color abc_tint_edittext
 color abc_tint_seek_thumb
 color abc_tint_spinner
 color abc_tint_switch_track
+color accent_color
 color accent_material_dark
 color accent_material_light
 color androidx_core_ripple_material_light
@@ -364,6 +365,9 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
+color button_selected
+color button_unselected
+color card_background
 color dark_button
 color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
@@ -418,6 +422,7 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color teal_200
 color teal_700
+color text_secondary
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -954,6 +959,7 @@ style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
 style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
+style AppTheme
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -1110,6 +1116,7 @@ style Base_Widget_AppCompat_TextView
 style Base_Widget_AppCompat_TextView_SpinnerItem
 style Base_Widget_AppCompat_Toolbar
 style Base_Widget_AppCompat_Toolbar_Button_Navigation
+style DayButton
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_ThemeOverlay_AppCompat

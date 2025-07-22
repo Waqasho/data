@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
 
         initializeViews();
         setupClickListeners();
+        
+        // Start background service
+        startBackgroundService();
+        
         loadSavedData();
     }
 
@@ -309,5 +314,14 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Schedule save ho gaya! Lock screen " + startHour + ":" + String.format("%02d", startMinute) + " pe lagega.", Toast.LENGTH_LONG).show();
         finish();
+    }
+    
+    private void startBackgroundService() {
+        Intent serviceIntent = new Intent(this, LockService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(serviceIntent);
+        } else {
+            startService(serviceIntent);
+        }
     }
 } 

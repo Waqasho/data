@@ -9,6 +9,7 @@ import android.util.Log;
 import java.util.Calendar;
 import java.util.Set;
 import android.content.ComponentName;
+import android.os.Build;
 
 public class ScheduleManager {
     private static final String TAG = "ScheduleManager";
@@ -57,22 +58,37 @@ public class ScheduleManager {
     private static void setAlarmForDay(Context context, AlarmManager alarmManager, 
                                      String day, int hour, int minute, boolean isLock) {
         Calendar alarmTime = Calendar.getInstance();
-        alarmTime.set(Calendar.DAY_OF_WEEK, getDayOfWeek(day));
+        Calendar now = Calendar.getInstance();
+        
+        // Set to today first
         alarmTime.set(Calendar.HOUR_OF_DAY, hour);
         alarmTime.set(Calendar.MINUTE, minute);
         alarmTime.set(Calendar.SECOND, 0);
         alarmTime.set(Calendar.MILLISECOND, 0);
         
-        // If time has passed today, schedule for next week
-        if (alarmTime.getTimeInMillis() <= System.currentTimeMillis()) {
-            alarmTime.add(Calendar.WEEK_OF_YEAR, 1);
+        // Calculate target day of week
+        int targetDayOfWeek = getDayOfWeek(day);
+        int currentDayOfWeek = now.get(Calendar.DAY_OF_WEEK);
+        
+        // Calculate days to add
+        int daysToAdd = targetDayOfWeek - currentDayOfWeek;
+        if (daysToAdd < 0) {
+            daysToAdd += 7; // Next week
+        } else if (daysToAdd == 0) {
+            // Same day - check if time has passed
+            if (alarmTime.getTimeInMillis() <= now.getTimeInMillis()) {
+                daysToAdd = 7; // Next week
+            }
         }
+        
+        alarmTime.add(Calendar.DAY_OF_YEAR, daysToAdd);
         
         String action = isLock ? "com.securelock.LOCK_DEVICE" : "com.securelock.UNLOCK_DEVICE";
         Intent intent = new Intent(action);
         intent.putExtra("day", day);
         intent.putExtra("hour", hour);
         intent.putExtra("minute", minute);
+        intent.putExtra("isLock", isLock);
         // Explicitly set the receiver component
         intent.setComponent(new ComponentName(context, LockReceiver.class));
         
@@ -81,11 +97,16 @@ public class ScheduleManager {
             PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         
         // Use setExactAndAllowWhileIdle for more reliable alarms
-        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarmTime.getTimeInMillis(), pendingIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, alarmTime.getTimeInMillis(), pendingIntent);
+        } else {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, alarmTime.getTimeInMillis(), pendingIntent);
+        }
         
         String type = isLock ? "Lock" : "Unlock";
-        Log.d(TAG, type + " alarm set for " + day + " at " + hour + ":" + minute + 
-              " (trigger time: " + alarmTime.getTimeInMillis() + ")");
+        Log.d(TAG, type + " alarm set for " + day + " at " + hour + ":" + String.format("%02d", minute) + 
+              " (trigger time: " + alarmTime.getTime() + ")");
+        Log.d(TAG, "Current time: " + now.getTime() + ", Days to add: " + daysToAdd);
     }
     
     // Test method to manually trigger lock for testing
