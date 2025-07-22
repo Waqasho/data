@@ -70,7 +70,7 @@ public class LockReceiver extends BroadcastReceiver {
                     
                     // Start the lock service for immediate lock
                     Intent serviceIntent = new Intent(context, LockService.class);
-                    serviceIntent.putExtra("duration", durationMinutes);
+                    serviceIntent.putExtra("duration_minutes", durationMinutes);
                     serviceIntent.putExtra("schedule_label", label);
                     serviceIntent.putExtra("is_immediate", true);
                     
@@ -118,7 +118,7 @@ public class LockReceiver extends BroadcastReceiver {
                             
                             // Start the lock service
                             Intent serviceIntent = new Intent(context, LockService.class);
-                            serviceIntent.putExtra("duration", durationMinutes);
+                            serviceIntent.putExtra("duration_minutes", durationMinutes);
                             serviceIntent.putExtra("schedule_label", label);
                             serviceIntent.putExtra("is_immediate", false);
                             
@@ -145,7 +145,7 @@ public class LockReceiver extends BroadcastReceiver {
                         
                         // Start the lock service
                         Intent serviceIntent = new Intent(context, LockService.class);
-                        serviceIntent.putExtra("duration", durationMinutes);
+                        serviceIntent.putExtra("duration_minutes", durationMinutes);
                         serviceIntent.putExtra("schedule_label", label);
                         serviceIntent.putExtra("is_immediate", false);
                         

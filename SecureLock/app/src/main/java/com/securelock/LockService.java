@@ -70,11 +70,15 @@ public class LockService extends Service {
             
             int durationMinutes = intent.getIntExtra("duration_minutes", 30);
             boolean isImmediate = intent.getBooleanExtra("is_immediate", false);
+            String scheduleLabel = intent.getStringExtra("schedule_label");
             
-            Log.d(TAG, "Starting lock service - Duration: " + durationMinutes + " minutes, Immediate: " + isImmediate);
+            Log.d(TAG, "Starting lock service - Duration: " + durationMinutes + " minutes, Immediate: " + isImmediate + ", Label: " + scheduleLabel);
             
             if (isImmediate) {
                 startImmediateLock(durationMinutes);
+            } else {
+                // Handle scheduled lock
+                startScheduledLock(durationMinutes, scheduleLabel != null ? scheduleLabel : "Scheduled Lock");
             }
         }
         
@@ -210,6 +214,35 @@ public class LockService extends Service {
         
         // Acquire wake lock to keep screen control
         acquireWakeLock();
+    }
+    
+    private void startScheduledLock(int durationMinutes, String label) {
+        // Stop any existing lock first
+        if (isLockActive) {
+            stopCurrentLockOnly();
+        }
+        
+        isLockActive = true;
+        lockEndTime = System.currentTimeMillis() + (durationMinutes * 60 * 1000L);
+        
+        Log.d(TAG, "Starting scheduled lock '" + label + "' for " + durationMinutes + " minutes");
+        
+        // Lock device immediately for scheduled lock too
+        lockDeviceNow();
+        
+        // Start notification updates
+        startNotificationUpdates();
+        
+        // Schedule unlock
+        scheduleUnlock();
+        
+        // Acquire wake lock to keep screen control
+        acquireWakeLock();
+        
+        // Show scheduled lock started toast
+        if (handler != null) {
+            handler.post(new ToastRunnable(this, "📅 " + label + " started! Device locked for " + durationMinutes + " minutes."));
+        }
     }
     
     private void lockDeviceNow() {
@@ -401,11 +434,19 @@ public class LockService extends Service {
     
     private void turnOnScreen() {
         try {
-            if (wakeLock != null) {
-                wakeLock.acquire(3000); // Keep screen on for 3 seconds
+            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (powerManager != null) {
+                // Create a new wake lock for screen on
+                PowerManager.WakeLock screenWakeLock = powerManager.newWakeLock(
+                    PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
+                    "SecureLock:ScreenOnWakeLock"
+                );
+                
+                screenWakeLock.acquire(5000); // Keep screen on for 5 seconds
+                Log.d(TAG, "Screen turned on with wake lock");
                 
                 if (handler != null) {
-                    handler.postDelayed(new WakeLockReleaseRunnable(wakeLock), 3000);
+                    handler.postDelayed(new WakeLockReleaseRunnable(screenWakeLock), 5000);
                 }
             }
         } catch (Exception e) {
