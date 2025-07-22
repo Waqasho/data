@@ -40,11 +40,13 @@ public class LockReceiver extends BroadcastReceiver {
                 Log.d(TAG, "Device admin active, processing lock request...");
                 
                 // Check if there's already an active lock
-                LockService currentService = LockService.getInstance();
-                if (currentService != null) {
+                if (LockService.isLockCurrentlyActive()) {
                     if (isImmediate) {
                         Log.d(TAG, "Immediate lock requested - stopping current lock first");
-                        LockService.stopCurrentLock(context);
+                        // Stop current lock by starting service with stop action
+                        Intent stopIntent = new Intent(context, LockService.class);
+                        stopIntent.putExtra("stop_current_lock", true);
+                        context.startService(stopIntent);
                         // Small delay to ensure previous lock is stopped
                         try {
                             Thread.sleep(500);
@@ -163,11 +165,15 @@ public class LockReceiver extends BroadcastReceiver {
             }
         } else if ("com.securelock.UNLOCK_DEVICE".equals(action)) {
             Log.d(TAG, "Unlock time reached - stopping active lock");
-            LockService.stopCurrentLock(context);
+            Intent stopIntent = new Intent(context, LockService.class);
+            stopIntent.putExtra("stop_current_lock", true);
+            context.startService(stopIntent);
             Toast.makeText(context, "⏰ Scheduled unlock time reached!", Toast.LENGTH_SHORT).show();
         } else if ("STOP_CURRENT_LOCK".equals(action)) {
             Log.d(TAG, "Manual stop lock requested");
-            LockService.stopCurrentLock(context);
+            Intent stopIntent = new Intent(context, LockService.class);
+            stopIntent.putExtra("stop_current_lock", true);
+            context.startService(stopIntent);
             Toast.makeText(context, "🔓 Lock stopped manually", Toast.LENGTH_SHORT).show();
         }
     }

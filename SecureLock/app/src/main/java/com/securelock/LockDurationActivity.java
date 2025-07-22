@@ -21,10 +21,9 @@ public class LockDurationActivity extends AppCompatActivity {
     
     private TextView durationText, titleText, descriptionText;
     private SeekBar durationSeekBar;
-    private Button duration5m, duration10m, duration15m, duration30m, duration1h, duration2h, duration3h;
     private Button startLockButton;
+    private Button duration15min, duration30min, duration1h, duration2h, duration3h;
     private ImageButton backButton;
-    
     private int selectedDuration = 30; // Default 30 minutes
     
     @Override
@@ -35,7 +34,6 @@ public class LockDurationActivity extends AppCompatActivity {
         initializeViews();
         setupClickListeners();
         updateDurationDisplay();
-        setupSeekBar();
     }
     
     private void initializeViews() {
@@ -43,74 +41,106 @@ public class LockDurationActivity extends AppCompatActivity {
         descriptionText = findViewById(R.id.descriptionText);
         durationText = findViewById(R.id.durationText);
         durationSeekBar = findViewById(R.id.durationSeekBar);
-        duration5m = findViewById(R.id.duration5m);
-        duration10m = findViewById(R.id.duration10m);
-        duration15m = findViewById(R.id.duration15m);
-        duration30m = findViewById(R.id.duration30m);
-        duration1h = findViewById(R.id.duration1h);
-        duration2h = findViewById(R.id.duration2h);
-        duration3h = findViewById(R.id.duration3h);
         startLockButton = findViewById(R.id.startLockButton);
         backButton = findViewById(R.id.backButton);
         
-        // Set modern titles
-        if (titleText != null) {
-            titleText.setText("🔒 Immediate Lock");
+        // Preset buttons
+        duration15min = findViewById(R.id.duration15m);
+        duration30min = findViewById(R.id.duration30m);
+        duration1h = findViewById(R.id.duration1h);
+        duration2h = findViewById(R.id.duration2h);
+        duration3h = findViewById(R.id.duration3h);
+        
+        // Set seekbar range (1-180 minutes)
+        if (durationSeekBar != null) {
+            durationSeekBar.setMax(179); // 0-179 represents 1-180
+            durationSeekBar.setProgress(selectedDuration - 1);
         }
-        if (descriptionText != null) {
-            descriptionText.setText("Select duration and lock your device instantly");
-        }
-    }
-    
-    private void setupSeekBar() {
-        // Set SeekBar range: 1 minute to 180 minutes (3 hours)
-        durationSeekBar.setMax(179); // 0-179 = 1-180 minutes
-        durationSeekBar.setProgress(selectedDuration - 1); // Set to 30 minutes (index 29)
     }
     
     private void setupClickListeners() {
-        // Duration preset buttons
-        duration5m.setOnClickListener(v -> setDuration(5));
-        duration10m.setOnClickListener(v -> setDuration(10));
-        duration15m.setOnClickListener(v -> setDuration(15));
-        duration30m.setOnClickListener(v -> setDuration(30));
-        duration1h.setOnClickListener(v -> setDuration(60));
-        duration2h.setOnClickListener(v -> setDuration(120));
-        duration3h.setOnClickListener(v -> setDuration(180));
+        // Preset duration buttons
+        if (duration15min != null) duration15min.setOnClickListener(this::onDuration15minClick);
+        if (duration30min != null) duration30min.setOnClickListener(this::onDuration30minClick);
+        if (duration1h != null) duration1h.setOnClickListener(this::onDuration1hClick);
+        if (duration2h != null) duration2h.setOnClickListener(this::onDuration2hClick);
+        if (duration3h != null) duration3h.setOnClickListener(this::onDuration3hClick);
         
-        // SeekBar listener
-        durationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
-                    selectedDuration = progress + 1; // Convert 0-179 to 1-180
-                    updateDurationDisplay();
-                    updatePresetButtons();
-                }
+        // SeekBar listener with null checks
+        if (durationSeekBar != null) {
+            durationSeekBar.setOnSeekBarChangeListener(new SeekBarChangeListener());
+        }
+        
+        // Start lock button with null check
+        if (startLockButton != null) {
+            startLockButton.setOnClickListener(this::onStartLockClick);
+        }
+        
+        // Back button with null check
+        if (backButton != null) {
+            backButton.setOnClickListener(this::onBackClick);
+        }
+    }
+    
+    // Separate click methods to avoid anonymous inner class issues
+    private void onDuration15minClick(View v) {
+        setDuration(15);
+    }
+    
+    private void onDuration30minClick(View v) {
+        setDuration(30);
+    }
+    
+    private void onDuration1hClick(View v) {
+        setDuration(60);
+    }
+    
+    private void onDuration2hClick(View v) {
+        setDuration(120);
+    }
+    
+    private void onDuration3hClick(View v) {
+        setDuration(180);
+    }
+    
+    private void onStartLockClick(View v) {
+        startImmediateLock();
+    }
+    
+    private void onBackClick(View v) {
+        finish();
+    }
+    
+    // Separate SeekBar listener class
+    private class SeekBarChangeListener implements SeekBar.OnSeekBarChangeListener {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            if (fromUser && seekBar != null) {
+                selectedDuration = progress + 1; // Convert 0-179 to 1-180
+                updateDurationDisplay();
+                updatePresetButtons();
             }
-            
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {}
-            
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {}
-        });
+        }
         
-        // Start lock button
-        startLockButton.setOnClickListener(v -> startImmediateLock());
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {}
         
-        // Back button
-        backButton.setOnClickListener(v -> finish());
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {}
     }
     
     private void setDuration(int minutes) {
         selectedDuration = minutes;
-        durationSeekBar.setProgress(minutes - 1); // Convert to 0-179 range
+        if (durationSeekBar != null) {
+            durationSeekBar.setProgress(minutes - 1); // Convert to 0-179 range
+        }
         updateDurationDisplay();
         updatePresetButtons();
     }
     
     private void updateDurationDisplay() {
+        if (durationText == null) return;
+        
         String displayText;
         if (selectedDuration < 60) {
             displayText = selectedDuration + " Minutes";
@@ -127,69 +157,60 @@ public class LockDurationActivity extends AppCompatActivity {
     }
     
     private void updatePresetButtons() {
-        // Reset all buttons
-        duration5m.setBackgroundResource(R.drawable.duration_button_background);
-        duration10m.setBackgroundResource(R.drawable.duration_button_background);
-        duration15m.setBackgroundResource(R.drawable.duration_button_background);
-        duration30m.setBackgroundResource(R.drawable.duration_button_background);
-        duration1h.setBackgroundResource(R.drawable.duration_button_background);
-        duration2h.setBackgroundResource(R.drawable.duration_button_background);
-        duration3h.setBackgroundResource(R.drawable.duration_button_background);
+        // Reset all button states
+        resetButtonState(duration15min);
+        resetButtonState(duration30min);
+        resetButtonState(duration1h);
+        resetButtonState(duration2h);
+        resetButtonState(duration3h);
         
-        // Highlight selected button
+        // Highlight selected duration
+        Button selectedButton = null;
         switch (selectedDuration) {
-            case 5:
-                duration5m.setBackgroundResource(R.drawable.duration_button_selected);
-                break;
-            case 10:
-                duration10m.setBackgroundResource(R.drawable.duration_button_selected);
-                break;
-            case 15:
-                duration15m.setBackgroundResource(R.drawable.duration_button_selected);
-                break;
-            case 30:
-                duration30m.setBackgroundResource(R.drawable.duration_button_selected);
-                break;
-            case 60:
-                duration1h.setBackgroundResource(R.drawable.duration_button_selected);
-                break;
-            case 120:
-                duration2h.setBackgroundResource(R.drawable.duration_button_selected);
-                break;
-            case 180:
-                duration3h.setBackgroundResource(R.drawable.duration_button_selected);
-                break;
+            case 15: selectedButton = duration15min; break;
+            case 30: selectedButton = duration30min; break;
+            case 60: selectedButton = duration1h; break;
+            case 120: selectedButton = duration2h; break;
+            case 180: selectedButton = duration3h; break;
+        }
+        
+        if (selectedButton != null) {
+            selectedButton.setBackgroundResource(R.color.blue_accent);
+        }
+    }
+    
+    private void resetButtonState(Button button) {
+        if (button != null) {
+            button.setBackgroundResource(R.color.dark_button);
         }
     }
     
     private void startImmediateLock() {
-        // Check device admin
+        // Check device admin first
         DevicePolicyManager dpm = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-        ComponentName compName = new ComponentName(this, MyDeviceAdminReceiver.class);
+        ComponentName adminComponent = new ComponentName(this, MyDeviceAdminReceiver.class);
         
-        if (!dpm.isAdminActive(compName)) {
-            Toast.makeText(this, "⚠️ Pehle Device Admin activate karein! Settings mein jaayein.", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent("android.settings.DEVICE_ADMIN_SETTINGS");
-            startActivity(intent);
+        if (dpm == null || !dpm.isAdminActive(adminComponent)) {
+            Toast.makeText(this, "⚠️ Device admin not enabled! Please enable it first.", Toast.LENGTH_LONG).show();
             return;
         }
         
-        // Create immediate lock intent
-        Intent lockIntent = new Intent("com.securelock.LOCK_DEVICE");
-        lockIntent.setComponent(new ComponentName(this, LockReceiver.class));
-        lockIntent.putExtra("duration", selectedDuration);
-        lockIntent.putExtra("label", "Immediate Lock (" + getDurationString() + ")");
-        lockIntent.putExtra("is_immediate", true);
+        // Start the lock service
+        Intent serviceIntent = new Intent(this, LockService.class);
+        serviceIntent.putExtra("duration_minutes", selectedDuration);
+        serviceIntent.putExtra("is_immediate", true);
         
-        // Send broadcast to start immediate lock
-        sendBroadcast(lockIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(serviceIntent);
+        } else {
+            startService(serviceIntent);
+        }
         
-        String durationStr = getDurationString();
-        Toast.makeText(this, "🔒 Immediate lock started for " + durationStr + "!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "🔒 Device will be locked for " + getFormattedDuration(), Toast.LENGTH_LONG).show();
         finish();
     }
     
-    private String getDurationString() {
+    private String getFormattedDuration() {
         if (selectedDuration < 60) {
             return selectedDuration + " minutes";
         } else {

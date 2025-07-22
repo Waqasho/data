@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
-INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
-INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
-INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
+INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
+INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
+INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/ubuntu/.gradle/caches/8.12/transforms/ba8c5b266f4926bd7be74d4a458a8f50/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] /home/ubuntu/.gradle/caches/8.12/transforms/94b9c9510706c6dc301febc3dfcf0a64/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.3.6] /home/ubuntu/.gradle/caches/8.12/transforms/7f73be720c87428f3468c20e4544327d/transformed/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
@@ -32,73 +32,73 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.5.1] /home/ubuntu/.gra
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/ubuntu/.gradle/caches/8.12/transforms/41a91cd6961aea8138797855073e6599/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/ubuntu/.gradle/caches/8.12/transforms/d650a50a617ada87a854c2c87b8bcc3b/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] /home/ubuntu/.gradle/caches/8.12/transforms/c3d082ad5f2b23ce0d9064ef3461758b/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
-INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
-INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
-INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
+INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
+INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
+INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
 	package
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:3:5-29
 		INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
 		INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
 		INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-76:12
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:1-75:12
 		INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:7:5-80
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:6:5-80
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:7:22-78
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:6:22-78
 uses-permission#android.permission.WAKE_LOCK
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:8:5-67
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:7:5-67
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:8:22-65
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:7:22-65
 uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:9:5-76
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:8:5-76
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:9:22-74
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:8:22-74
 uses-permission#android.permission.FOREGROUND_SERVICE_DATA_SYNC
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:10:5-86
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:9:5-86
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:10:22-84
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:9:22-84
 uses-permission#android.permission.USE_FULL_SCREEN_INTENT
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:11:5-80
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:10:5-80
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:11:22-78
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:10:22-78
 uses-permission#android.permission.DISABLE_KEYGUARD
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:12:5-74
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:11:5-74
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:12:22-72
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:11:22-72
 uses-permission#android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:13:5-94
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:12:5-94
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:13:22-92
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:12:22-92
 uses-permission#android.permission.SCHEDULE_EXACT_ALARM
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:14:5-78
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:13:5-78
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:14:22-76
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:13:22-76
 uses-permission#android.permission.USE_EXACT_ALARM
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:15:5-73
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:14:5-73
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:15:22-71
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:14:22-71
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:16:5-77
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:15:5-77
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:16:22-75
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:15:22-75
 uses-permission#android.permission.REORDER_TASKS
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:17:5-71
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:16:5-71
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:17:22-69
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:16:22-69
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:18:5-76
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:17:5-76
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:18:22-74
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:17:22-74
 application
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:20:5-75:19
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:19:5-74:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
 MERGED from [androidx.core:core:1.9.0] /home/ubuntu/.gradle/caches/8.12/transforms/7da3e27adb8c02368eb46247c342376b/transformed/core-1.9.0/AndroidManifest.xml:28:5-89
@@ -112,89 +112,89 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/ubunt
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] /home/ubuntu/.gradle/caches/8.12/transforms/7da3e27adb8c02368eb46247c342376b/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:24:9-35
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:23:9-35
 	android:label
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:22:9-35
-	android:icon
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:23:9-43
-	android:allowBackup
 		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:21:9-35
+	android:icon
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:22:9-43
+	android:allowBackup
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:20:9-35
 	android:theme
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:25:9-65
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:24:9-65
 activity#com.securelock.MainActivity
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:28:9-29:38
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:27:9-28:38
 	android:exported
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:29:13-36
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:28:13-36
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:28:19-47
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:27:19-47
 activity#com.securelock.ScheduleListActivity
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:32:9-38:20
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:31:9-37:20
 	android:exported
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:33:13-36
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:32:13-36
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:32:19-55
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:31:19-55
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:34:13-37:29
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:33:13-36:29
 action#android.intent.action.MAIN
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:35:17-68
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:34:17-68
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:35:25-66
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:34:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:36:17-76
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:35:17-76
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:36:27-74
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:35:27-74
 activity#com.securelock.LockDurationActivity
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:41:9-42:39
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:40:9-41:39
 	android:exported
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:42:13-37
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:41:13-37
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:41:19-55
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:40:19-55
 receiver#com.securelock.MyDeviceAdminReceiver
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:47:9-57:20
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:46:9-56:20
 	android:exported
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:50:13-36
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:49:13-36
 	android:permission
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:49:13-70
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:48:13-70
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:48:13-50
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:47:13-50
 meta-data#android.app.device_admin
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:51:13-53:64
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:50:13-52:64
 	android:resource
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:53:17-62
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:52:17-62
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:52:17-56
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:51:17-56
 intent-filter#action:name:android.app.action.DEVICE_ADMIN_ENABLED
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:54:13-56:29
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:53:13-55:29
 action#android.app.action.DEVICE_ADMIN_ENABLED
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:55:17-81
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:54:17-81
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:55:25-79
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:54:25-79
 receiver#com.securelock.LockReceiver
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:60:9-66:20
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:59:9-65:20
 	android:exported
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:61:13-36
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:60:13-36
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:60:19-47
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:59:19-47
 intent-filter#action:name:com.securelock.LOCK_DEVICE+action:name:com.securelock.UNLOCK_DEVICE
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:62:13-65:29
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:61:13-64:29
 action#com.securelock.LOCK_DEVICE
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:63:17-68
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:62:17-68
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:63:25-66
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:62:25-66
 action#com.securelock.UNLOCK_DEVICE
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:64:17-70
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:63:17-70
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:64:25-68
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:63:25-68
 service#com.securelock.LockService
-ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:69:9-73:56
+ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:68:9-72:56
 	android:enabled
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:71:13-35
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:70:13-35
 	android:exported
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:72:13-37
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:71:13-37
 	android:foregroundServiceType
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:73:13-53
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:72:13-53
 	android:name
-		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:70:13-40
+		ADDED from /workspace/SecureLock/app/src/main/AndroidManifest.xml:69:13-40
 uses-sdk
 INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /workspace/SecureLock/app/src/main/AndroidManifest.xml

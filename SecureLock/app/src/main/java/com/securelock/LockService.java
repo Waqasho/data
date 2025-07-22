@@ -25,166 +25,274 @@ import java.util.TimerTask;
 
 public class LockService extends Service {
     private static final String TAG = "LockService";
-    private static final String CHANNEL_ID = "SecureLockChannel";
-    private static final String PERSISTENT_CHANNEL_ID = "SecureLockPersistent";
     private static final int NOTIFICATION_ID = 1001;
     private static final int PERSISTENT_NOTIFICATION_ID = 1002;
+    private static final String CHANNEL_ID = "SecureLockChannel";
+    private static final String PERSISTENT_CHANNEL_ID = "SecureLockPersistentChannel";
     
-    private DevicePolicyManager dpm;
-    private ComponentName compName;
-    private PowerManager powerManager;
-    private Timer lockTimer;
-    private long lockEndTime;
+    private static boolean isLockActive = false;
+    private static long lockEndTime = 0;
+    
+    private DevicePolicyManager devicePolicyManager;
+    private ComponentName adminComponent;
     private Handler handler;
-    private boolean isLockActive = false;
-    private boolean isImmediateLock = false;
-    private String scheduleLabel = "SecureLock";
-    private static LockService instance;
-    
-    // Broadcast receiver for screen unlock events
-    private BroadcastReceiver screenReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (isLockActive && (Intent.ACTION_USER_PRESENT.equals(action) || Intent.ACTION_SCREEN_ON.equals(action))) {
-                // User unlocked the screen or turned on screen, re-lock immediately
-                Log.d(TAG, "Screen event detected: " + action + ", re-locking device");
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (isLockActive) {
-                            lockDevice();
-                        }
-                    }
-                }, 1000); // Wait 1 second before re-locking
-            }
-        }
-    };
+    private Timer lockTimer;
+    private Timer notificationTimer;
+    private PowerManager.WakeLock wakeLock;
+    private BroadcastReceiver screenReceiver;
     
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
-        dpm = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-        compName = new ComponentName(this, MyDeviceAdminReceiver.class);
-        powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        
+        devicePolicyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+        adminComponent = new ComponentName(this, MyDeviceAdminReceiver.class);
         handler = new Handler(Looper.getMainLooper());
         
-        // Register screen unlock receiver
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(Intent.ACTION_USER_PRESENT);
-        filter.addAction(Intent.ACTION_SCREEN_ON);
-        registerReceiver(screenReceiver, filter);
-        
         createNotificationChannels();
-        showPersistentNotification();
-    }
-    
-    public static LockService getInstance() {
-        return instance;
-    }
-    
-    public static void stopCurrentLock(Context context) {
-        if (instance != null) {
-            instance.stopLock();
-        }
+        startPersistentNotification();
+        registerScreenReceiver();
+        
+        Log.d(TAG, "LockService created");
     }
     
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent != null) {
-            int durationMinutes = intent.getIntExtra("duration", 5);
-            scheduleLabel = intent.getStringExtra("schedule_label");
-            isImmediateLock = intent.getBooleanExtra("is_immediate", false);
+            boolean shouldStopCurrentLock = intent.getBooleanExtra("stop_current_lock", false);
             
-            if (scheduleLabel == null) {
-                scheduleLabel = "SecureLock";
-            }
-            
-            // Stop any existing lock first
-            if (isLockActive) {
+            if (shouldStopCurrentLock) {
+                Log.d(TAG, "Stopping current lock as requested");
                 stopCurrentLockOnly();
+                return START_STICKY;
             }
             
-            startLock(durationMinutes);
+            int durationMinutes = intent.getIntExtra("duration_minutes", 30);
+            boolean isImmediate = intent.getBooleanExtra("is_immediate", false);
+            
+            Log.d(TAG, "Starting lock service - Duration: " + durationMinutes + " minutes, Immediate: " + isImmediate);
+            
+            if (isImmediate) {
+                startImmediateLock(durationMinutes);
+            }
         }
+        
         return START_STICKY;
     }
     
-    private void startLock(int durationMinutes) {
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+    
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        
+        if (screenReceiver != null) {
+            try {
+                unregisterReceiver(screenReceiver);
+            } catch (Exception e) {
+                Log.e(TAG, "Error unregistering screen receiver: " + e.getMessage());
+            }
+        }
+        
+        if (lockTimer != null) {
+            lockTimer.cancel();
+        }
+        
+        if (notificationTimer != null) {
+            notificationTimer.cancel();
+        }
+        
+        if (wakeLock != null && wakeLock.isHeld()) {
+            wakeLock.release();
+        }
+        
+        Log.d(TAG, "LockService destroyed");
+    }
+    
+    private void createNotificationChannels() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            
+            // Lock notification channel
+            NotificationChannel lockChannel = new NotificationChannel(
+                CHANNEL_ID,
+                "SecureLock Active",
+                NotificationManager.IMPORTANCE_HIGH
+            );
+            lockChannel.setDescription("Shows when device lock is active");
+            lockChannel.setShowBadge(true);
+            notificationManager.createNotificationChannel(lockChannel);
+            
+            // Persistent notification channel
+            NotificationChannel persistentChannel = new NotificationChannel(
+                PERSISTENT_CHANNEL_ID,
+                "SecureLock Running",
+                NotificationManager.IMPORTANCE_LOW
+            );
+            persistentChannel.setDescription("Shows that SecureLock is running in background");
+            persistentChannel.setShowBadge(false);
+            notificationManager.createNotificationChannel(persistentChannel);
+        }
+    }
+    
+    private void startPersistentNotification() {
+        Intent intent = new Intent(this, ScheduleListActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+            this, 0, intent, 
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_IMMUTABLE : 0
+        );
+        
+        Notification notification = new NotificationCompat.Builder(this, PERSISTENT_CHANNEL_ID)
+            .setContentTitle("🔒 SecureLock Running")
+            .setContentText("Tap to open app")
+            .setSmallIcon(android.R.drawable.ic_lock_idle_lock)
+            .setContentIntent(pendingIntent)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .build();
+        
+        startForeground(PERSISTENT_NOTIFICATION_ID, notification);
+    }
+    
+    private void registerScreenReceiver() {
+        screenReceiver = new ScreenBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_SCREEN_ON);
+        filter.addAction(Intent.ACTION_USER_PRESENT);
+        registerReceiver(screenReceiver, filter);
+    }
+    
+    // Separate BroadcastReceiver class to avoid anonymous inner class issues
+    private class ScreenBroadcastReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (isLockActive && intent != null) {
+                String action = intent.getAction();
+                if (Intent.ACTION_SCREEN_ON.equals(action) || Intent.ACTION_USER_PRESENT.equals(action)) {
+                    // Re-lock the device if lock is still active
+                    lockDeviceNow();
+                }
+            }
+        }
+    }
+    
+    private void startImmediateLock(int durationMinutes) {
+        // Stop any existing lock first
+        if (isLockActive) {
+            stopCurrentLockOnly();
+        }
+        
         isLockActive = true;
         lockEndTime = System.currentTimeMillis() + (durationMinutes * 60 * 1000L);
         
-        Log.d(TAG, "Starting lock for " + durationMinutes + " minutes. End time: " + lockEndTime);
-        
-        // Show schedule start notification
-        showScheduleStartNotification(durationMinutes);
+        Log.d(TAG, "Starting immediate lock for " + durationMinutes + " minutes");
         
         // Lock device immediately
-        lockDevice();
+        lockDeviceNow();
         
-        // Start foreground service with notification
-        startForeground(NOTIFICATION_ID, createNotification(durationMinutes));
+        // Start notification updates
+        startNotificationUpdates();
         
-        // Start timer to update notification and check lock status
-        lockTimer = new Timer();
-        lockTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                updateNotification();
-                checkLockStatus();
-                
-                // Periodically ensure device is locked (every 30 seconds)
-                if (isLockActive && (System.currentTimeMillis() % 30000) < 1000) {
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (isLockActive) {
-                                lockDevice();
-                            }
-                        }
-                    });
-                }
-            }
-        }, 0, 1000); // Update every second
+        // Schedule unlock
+        scheduleUnlock();
+        
+        // Acquire wake lock to keep screen control
+        acquireWakeLock();
     }
     
-    private void lockDevice() {
-        if (dpm.isAdminActive(compName)) {
-            try {
-                dpm.lockNow();
-                Log.d(TAG, "Device locked successfully at " + System.currentTimeMillis());
-                
-                // Also show a toast to confirm lock
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(LockService.this, "🔒 Device Locked!", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } catch (Exception e) {
-                Log.e(TAG, "Error locking device: " + e.getMessage());
-                
-                // Show error toast
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(LockService.this, "❌ Error locking device: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+    private void lockDeviceNow() {
+        try {
+            if (devicePolicyManager != null && devicePolicyManager.isAdminActive(adminComponent)) {
+                devicePolicyManager.lockNow();
+                Log.d(TAG, "Device locked successfully");
+            } else {
+                Log.e(TAG, "Device admin not active");
+                showErrorToast("Device admin not active! Please enable in settings.");
+                stopSelf();
             }
+        } catch (Exception e) {
+            Log.e(TAG, "Error locking device: " + e.getMessage());
+            showErrorToast("Error locking device: " + (e.getMessage() != null ? e.getMessage() : "Unknown error"));
+        }
+    }
+    
+    private void showErrorToast(final String message) {
+        if (handler != null) {
+            handler.post(new ToastRunnable(message));
+        }
+    }
+    
+    // Separate Runnable class for Toast
+    private class ToastRunnable implements Runnable {
+        private final String message;
+        
+        public ToastRunnable(String message) {
+            this.message = message;
+        }
+        
+        @Override
+        public void run() {
+            if (LockService.this != null) {
+                Toast.makeText(LockService.this, "⚠️ " + message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+    
+    private void startNotificationUpdates() {
+        if (notificationTimer != null) {
+            notificationTimer.cancel();
+        }
+        
+        notificationTimer = new Timer();
+        notificationTimer.scheduleAtFixedRate(new NotificationUpdateTask(), 0, 1000); // Update every second
+    }
+    
+    // Separate TimerTask class
+    private class NotificationUpdateTask extends TimerTask {
+        @Override
+        public void run() {
+            updateNotification();
+        }
+    }
+    
+    private void scheduleUnlock() {
+        if (lockTimer != null) {
+            lockTimer.cancel();
+        }
+        
+        long delay = lockEndTime - System.currentTimeMillis();
+        if (delay > 0) {
+            lockTimer = new Timer();
+            lockTimer.schedule(new UnlockTask(), delay);
+            Log.d(TAG, "Unlock scheduled in " + (delay / 1000) + " seconds");
         } else {
-            Log.e(TAG, "Device admin not active");
-            
-            // Show error toast
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(LockService.this, "⚠️ Device admin not active! Please enable in settings.", Toast.LENGTH_LONG).show();
-                }
-            });
-            
-            stopSelf();
+            stopLock();
+        }
+    }
+    
+    // Separate TimerTask class for unlock
+    private class UnlockTask extends TimerTask {
+        @Override
+        public void run() {
+            stopLock();
+        }
+    }
+    
+    private void acquireWakeLock() {
+        try {
+            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (powerManager != null) {
+                wakeLock = powerManager.newWakeLock(
+                    PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
+                    "SecureLock:UnlockWakeLock"
+                );
+                // Don't acquire here, only when unlocking
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error creating wake lock: " + e.getMessage());
         }
     }
     
@@ -202,15 +310,86 @@ public class LockService extends Service {
         NotificationManager notificationManager = 
             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         
-        notificationManager.notify(NOTIFICATION_ID, 
-            createNotification(remainingMinutes, remainingSeconds));
+        if (notificationManager != null) {
+            notificationManager.notify(NOTIFICATION_ID, 
+                createNotification(remainingMinutes, remainingSeconds));
+        }
     }
     
-    private void checkLockStatus() {
-        // Check if lock time has expired
-        if (System.currentTimeMillis() >= lockEndTime) {
-            Log.d(TAG, "Lock time expired, stopping lock service");
-            stopLock();
+    private Notification createNotification(int minutes, int seconds) {
+        String timeText = String.format("%02d:%02d", minutes, seconds);
+        
+        Intent intent = new Intent(this, ScheduleListActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+            this, 0, intent,
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_IMMUTABLE : 0
+        );
+        
+        return new NotificationCompat.Builder(this, CHANNEL_ID)
+            .setContentTitle("🔒 Device Locked")
+            .setContentText("Unlocks in: " + timeText)
+            .setSmallIcon(android.R.drawable.ic_lock_idle_lock)
+            .setContentIntent(pendingIntent)
+            .setOngoing(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .build();
+    }
+    
+    private void stopLock() {
+        Log.d(TAG, "Stopping lock service");
+        
+        isLockActive = false;
+        
+        // Cancel timers
+        if (lockTimer != null) {
+            lockTimer.cancel();
+            lockTimer = null;
+        }
+        
+        if (notificationTimer != null) {
+            notificationTimer.cancel();
+            notificationTimer = null;
+        }
+        
+        // Remove lock notification
+        NotificationManager notificationManager = 
+            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (notificationManager != null) {
+            notificationManager.cancel(NOTIFICATION_ID);
+        }
+        
+        // Turn on screen when unlocking
+        turnOnScreen();
+        
+        // Show unlock toast
+        if (handler != null) {
+            handler.post(new ToastRunnable("✅ Device unlocked! Lock period completed."));
+        }
+        
+        Log.d(TAG, "Device unlocked successfully");
+    }
+    
+    private void turnOnScreen() {
+        try {
+            if (wakeLock != null) {
+                wakeLock.acquire(3000); // Keep screen on for 3 seconds
+                
+                if (handler != null) {
+                    handler.postDelayed(new WakeLockReleaseRunnable(), 3000);
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error turning on screen: " + e.getMessage());
+        }
+    }
+    
+    // Separate Runnable for wake lock release
+    private class WakeLockReleaseRunnable implements Runnable {
+        @Override
+        public void run() {
+            if (wakeLock != null && wakeLock.isHeld()) {
+                wakeLock.release();
+            }
         }
     }
     
@@ -222,187 +401,24 @@ public class LockService extends Service {
             lockTimer = null;
         }
         
-        // Remove active lock notification
+        if (notificationTimer != null) {
+            notificationTimer.cancel();
+            notificationTimer = null;
+        }
+        
         NotificationManager notificationManager = 
             (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(NOTIFICATION_ID);
-    }
-    
-    private void stopLock() {
-        stopCurrentLockOnly();
-        
-        // Show completion notification
-        showCompletionNotification();
-        
-        // Turn screen on automatically when timer ends
-        turnScreenOn();
-        
-        stopForeground(true);
-        
-        // Don't stop service completely, keep persistent notification
-        showPersistentNotification();
-    }
-    
-    private void turnScreenOn() {
-        try {
-            // Turn screen on when lock expires
-            PowerManager.WakeLock wakeLock = powerManager.newWakeLock(
-                PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP,
-                "SecureLock:ScreenOn"
-            );
-            wakeLock.acquire(3000); // Keep screen on for 3 seconds
-            
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(LockService.this, "✅ Lock Timer Complete! Screen Turned On", Toast.LENGTH_LONG).show();
-                }
-            });
-            
-            Log.d(TAG, "Screen turned on automatically after lock expiry");
-        } catch (Exception e) {
-            Log.e(TAG, "Error turning screen on: " + e.getMessage());
+        if (notificationManager != null) {
+            notificationManager.cancel(NOTIFICATION_ID);
         }
     }
     
-    private Notification createNotification(int minutes) {
-        return createNotification(minutes, 0);
+    public static boolean isLockCurrentlyActive() {
+        return isLockActive;
     }
     
-    private Notification createNotification(int minutes, int seconds) {
-        String timeText = String.format("%02d:%02d", minutes, seconds);
-        String title = "🔒 " + scheduleLabel + " Active";
-        String content = "Device locked - " + timeText + " remaining";
-        
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent,
-            PendingIntent.FLAG_IMMUTABLE);
-        
-        // Add stop action
-        Intent stopIntent = new Intent(this, LockService.class);
-        stopIntent.setAction("STOP_LOCK");
-        PendingIntent stopPendingIntent = PendingIntent.getService(this, 0, stopIntent,
-            PendingIntent.FLAG_IMMUTABLE);
-        
-        return new NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle(title)
-            .setContentText(content)
-            .setSmallIcon(android.R.drawable.ic_lock_lock)
-            .setContentIntent(pendingIntent)
-            .setOngoing(true)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setCategory(NotificationCompat.CATEGORY_SERVICE)
-            .setStyle(new NotificationCompat.BigTextStyle().bigText(content))
-            .addAction(android.R.drawable.ic_media_pause, "Stop Lock", stopPendingIntent)
-            .build();
-    }
-    
-    private void showPersistentNotification() {
-        NotificationManager notificationManager = 
-            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        
-        Intent notificationIntent = new Intent(this, ScheduleListActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent,
-            PendingIntent.FLAG_IMMUTABLE);
-        
-        Notification persistentNotification = new NotificationCompat.Builder(this, PERSISTENT_CHANNEL_ID)
-            .setContentTitle("🛡️ SecureLock Running")
-            .setContentText("App is running in background - Ready to lock when scheduled")
-            .setSmallIcon(android.R.drawable.ic_lock_idle_lock)
-            .setContentIntent(pendingIntent)
-            .setOngoing(true)
-            .setPriority(NotificationCompat.PRIORITY_LOW)
-            .setCategory(NotificationCompat.CATEGORY_SERVICE)
-            .build();
-        
-        notificationManager.notify(PERSISTENT_NOTIFICATION_ID, persistentNotification);
-    }
-    
-    private void showScheduleStartNotification(int durationMinutes) {
-        NotificationManager notificationManager = 
-            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        
-        String lockType = isImmediateLock ? "Immediate Lock" : "Scheduled Lock";
-        
-        Notification startNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("🔒 " + lockType + " Started")
-            .setContentText(scheduleLabel + " - Device locked for " + durationMinutes + " minutes")
-            .setSmallIcon(android.R.drawable.ic_lock_lock)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setAutoCancel(true)
-            .build();
-        
-        notificationManager.notify(NOTIFICATION_ID + 2, startNotification);
-    }
-    
-    private void showCompletionNotification() {
-        NotificationManager notificationManager = 
-            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        
-        String lockType = isImmediateLock ? "Immediate Lock" : "Scheduled Lock";
-        
-        Notification completionNotification = new NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("✅ " + lockType + " Complete")
-            .setContentText(scheduleLabel + " - Lock time expired. Screen turned on automatically!")
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setAutoCancel(true)
-            .build();
-        
-        notificationManager.notify(NOTIFICATION_ID + 1, completionNotification);
-    }
-    
-    private void createNotificationChannels() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // Active lock channel
-            NotificationChannel channel = new NotificationChannel(
-                CHANNEL_ID,
-                "SecureLock Active",
-                NotificationManager.IMPORTANCE_HIGH
-            );
-            channel.setDescription("Notifications for active lock sessions");
-            
-            // Persistent background channel
-            NotificationChannel persistentChannel = new NotificationChannel(
-                PERSISTENT_CHANNEL_ID,
-                "SecureLock Background",
-                NotificationManager.IMPORTANCE_LOW
-            );
-            persistentChannel.setDescription("Background service notification");
-            
-            NotificationManager notificationManager = 
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.createNotificationChannel(channel);
-            notificationManager.createNotificationChannel(persistentChannel);
-        }
-    }
-    
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        instance = null;
-        if (screenReceiver != null) {
-            unregisterReceiver(screenReceiver);
-        }
-        if (lockTimer != null) {
-            lockTimer.cancel();
-        }
-        
-        // Remove persistent notification when service is destroyed
-        NotificationManager notificationManager = 
-            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(PERSISTENT_NOTIFICATION_ID);
-    }
-    
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
-    
-    // Method to manually stop the lock service
-    public static void stopLockService(Context context) {
-        if (instance != null) {
-            instance.stopLock();
-        }
+    public static long getRemainingLockTime() {
+        if (!isLockActive) return 0;
+        return Math.max(0, lockEndTime - System.currentTimeMillis());
     }
 } 
