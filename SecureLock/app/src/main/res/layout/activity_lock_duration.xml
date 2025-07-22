@@ -1,143 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/space_background"
-    android:padding="24dp">
+    android:fillViewport="true">
 
-    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="32dp">
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_back"
-            android:background="@null"
-            android:tint="@color/white"/>
-
-        <TextView
-            android:layout_width="0dp"
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Immediate Lock"
-            android:textSize="20sp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_back"
+                android:background="@null"
+                android:tint="@color/white"
+                android:contentDescription="Back"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+        <!-- Title Section -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔒 Immediate Lock"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_marginBottom="8dp"/>
 
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select duration and lock your device instantly"
+            android:textSize="16sp"
+            android:textColor="@color/light_gray"
+            android:gravity="center"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Duration Display -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/schedule_card_background"
+            android:padding="20dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/durationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="⏱️ Duration: 30 Minutes"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <SeekBar
+                android:id="@+id/durationSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="179"
+                android:progress="29"
+                android:progressTint="@color/blue_accent"
+                android:thumbTint="@color/blue_accent"
+                android:progressBackgroundTint="@color/light_gray"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1 min"
+                    android:textSize="12sp"
+                    android:textColor="@color/light_gray"
+                    android:gravity="start"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3 hours"
+                    android:textSize="12sp"
+                    android:textColor="@color/light_gray"
+                    android:gravity="end"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Quick Duration Buttons -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚡ Quick Select"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="start"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Minutes Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/duration5m"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="5m"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/duration_button_background"
+                android:layout_margin="4dp"/>
+
+            <Button
+                android:id="@+id/duration10m"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="10m"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/duration_button_background"
+                android:layout_margin="4dp"/>
+
+            <Button
+                android:id="@+id/duration15m"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="15m"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/duration_button_background"
+                android:layout_margin="4dp"/>
+
+            <Button
+                android:id="@+id/duration30m"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="30m"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/duration_button_selected"
+                android:layout_margin="4dp"/>
+        </LinearLayout>
+
+        <!-- Hours Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="32dp">
+
+            <Button
+                android:id="@+id/duration1h"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="1h"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/duration_button_background"
+                android:layout_margin="4dp"/>
+
+            <Button
+                android:id="@+id/duration2h"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="2h"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/duration_button_background"
+                android:layout_margin="4dp"/>
+
+            <Button
+                android:id="@+id/duration3h"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="3h"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/duration_button_background"
+                android:layout_margin="4dp"/>
+
+            <!-- Empty space to balance the row -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"/>
+
+        </LinearLayout>
+
+        <!-- Warning Text -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/schedule_card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚠️"
+                android:textSize="16sp"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Device will be locked immediately and automatically unlock when timer expires. Screen will turn on automatically."
+                android:textSize="14sp"
+                android:textColor="@color/light_gray"
+                android:lineSpacingMultiplier="1.2"/>
+
+        </LinearLayout>
+
+        <!-- Start Lock Button -->
+        <Button
+            android:id="@+id/startLockButton"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="🔒 START IMMEDIATE LOCK"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/start_lock_button"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Bottom spacing for scroll -->
         <View
-            android:layout_width="48dp"
-            android:layout_height="48dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="24dp"/>
+
     </LinearLayout>
 
-    <!-- Lock Duration Section -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lock Duration"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_marginBottom="16dp"/>
-
-    <TextView
-        android:id="@+id/durationText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Minutes: 5"
-        android:textSize="14sp"
-        android:textColor="@color/light_gray"
-        android:gravity="center"
-        android:layout_marginBottom="8dp"/>
-
-    <SeekBar
-        android:id="@+id/durationSeekBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="30"
-        android:progress="5"
-        android:progressTint="@color/blue_accent"
-        android:thumbTint="@color/blue_accent"
-        android:layout_marginBottom="16dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="32dp">
-
-        <Button
-            android:id="@+id/duration5m"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:text="5M"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:background="@drawable/duration_button_selected"
-            android:layout_margin="4dp"/>
-
-        <Button
-            android:id="@+id/duration10m"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:text="10M"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:background="@drawable/duration_button_background"
-            android:layout_margin="4dp"/>
-
-        <Button
-            android:id="@+id/duration15m"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:text="15M"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:background="@drawable/duration_button_background"
-            android:layout_margin="4dp"/>
-
-        <Button
-            android:id="@+id/duration30m"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:text="30M"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:background="@drawable/duration_button_background"
-            android:layout_margin="4dp"/>
-    </LinearLayout>
-
-    <!-- Spacer -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <!-- Start Lock Button -->
-    <Button
-        android:id="@+id/startLockButton"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="START LOCK"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@drawable/save_button_background"
-        android:drawableStart="@drawable/ic_check"
-        android:drawablePadding="8dp"
-        android:gravity="center"/>
-
-</LinearLayout> 
+</ScrollView> 

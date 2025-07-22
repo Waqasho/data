@@ -22,7 +22,7 @@ import java.util.Set;
 public class ScheduleListActivity extends AppCompatActivity {
     
     private LinearLayout scheduleContainer;
-    private Button addNewScheduleButton;
+    private Button addNewScheduleButton, immediateLockButton;
     private ImageButton backButton;
     private ScrollView scrollView;
     private SharedPreferences prefs;
@@ -45,10 +45,14 @@ public class ScheduleListActivity extends AppCompatActivity {
     private void initializeViews() {
         scheduleContainer = findViewById(R.id.scheduleContainer);
         addNewScheduleButton = findViewById(R.id.addNewScheduleButton);
+        immediateLockButton = findViewById(R.id.immediateLockButton);
         backButton = findViewById(R.id.backButton);
         scrollView = findViewById(R.id.scrollView);
         
         prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        
+        // Start persistent service
+        startPersistentService();
     }
     
     private void setupClickListeners() {
@@ -57,14 +61,22 @@ public class ScheduleListActivity extends AppCompatActivity {
             startActivity(intent);
         });
         
-        // Test lock button (long press on add button)
-        addNewScheduleButton.setOnLongClickListener(v -> {
-            ScheduleManager.testLockNow(this);
-            Toast.makeText(this, "Test lock triggered!", Toast.LENGTH_SHORT).show();
-            return true;
+        immediateLockButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, LockDurationActivity.class);
+            startActivity(intent);
         });
         
         backButton.setOnClickListener(v -> finish());
+    }
+    
+    private void startPersistentService() {
+        // Start the service to show persistent notification
+        Intent serviceIntent = new Intent(this, LockService.class);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            startForegroundService(serviceIntent);
+        } else {
+            startService(serviceIntent);
+        }
     }
     
     private void loadSchedules() {
@@ -73,13 +85,35 @@ public class ScheduleListActivity extends AppCompatActivity {
         int scheduleCount = prefs.getInt(SCHEDULE_COUNT, 0);
         
         if (scheduleCount == 0) {
-            // Show empty state
+            // Show modern empty state
+            LinearLayout emptyLayout = new LinearLayout(this);
+            emptyLayout.setOrientation(LinearLayout.VERTICAL);
+            emptyLayout.setGravity(android.view.Gravity.CENTER);
+            emptyLayout.setPadding(40, 100, 40, 100);
+            
+            TextView emptyIcon = new TextView(this);
+            emptyIcon.setText("📅");
+            emptyIcon.setTextSize(48);
+            emptyIcon.setGravity(android.view.Gravity.CENTER);
+            emptyLayout.addView(emptyIcon);
+            
+            TextView emptyTitle = new TextView(this);
+            emptyTitle.setText("No Schedules Yet");
+            emptyTitle.setTextSize(20);
+            emptyTitle.setTextColor(getResources().getColor(android.R.color.white));
+            emptyTitle.setGravity(android.view.Gravity.CENTER);
+            emptyTitle.setPadding(0, 16, 0, 8);
+            emptyLayout.addView(emptyTitle);
+            
             TextView emptyText = new TextView(this);
-            emptyText.setText("Koi schedule nahi hai\nAdd Schedule button dabayein");
-            emptyText.setTextSize(16);
+            emptyText.setText("Create your first schedule to automatically lock your device at specific times");
+            emptyText.setTextSize(14);
+            emptyText.setTextColor(getResources().getColor(R.color.light_gray));
             emptyText.setGravity(android.view.Gravity.CENTER);
-            emptyText.setPadding(0, 100, 0, 0);
-            scheduleContainer.addView(emptyText);
+            emptyText.setPadding(0, 0, 0, 24);
+            emptyLayout.addView(emptyText);
+            
+            scheduleContainer.addView(emptyLayout);
         } else {
             // Load all schedules
             for (int i = 0; i < scheduleCount; i++) {
