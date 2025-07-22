@@ -1,0 +1,191 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.securelock"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/workspace/SecureLock/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/workspace/SecureLock/app/src/main/AndroidManifest.xml
+10
+11    <!-- Roman Urdu: Device admin aur lock ke liye permissions -->
+12    <!-- Roman Urdu: Device admin aur lock ke liye permissions -->
+13    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+13-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:7:5-80
+13-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:7:22-78
+14    <uses-permission android:name="android.permission.WAKE_LOCK" />
+14-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:8:5-67
+14-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:8:22-65
+15    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+15-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:9:5-76
+15-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:9:22-74
+16    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+16-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:10:5-86
+16-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:10:22-84
+17    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+17-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:11:5-80
+17-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:11:22-78
+18    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+18-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:12:5-74
+18-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:12:22-72
+19    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+19-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:13:5-94
+19-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:13:22-92
+20    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+20-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:14:5-78
+20-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:14:22-76
+21    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+21-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:15:5-73
+21-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:15:22-71
+22    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+22-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:16:5-77
+22-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:16:22-75
+23    <uses-permission android:name="android.permission.REORDER_TASKS" />
+23-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:17:5-71
+23-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:17:22-69
+24    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+24-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:18:5-76
+24-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:18:22-74
+25
+26    <permission
+26-->[androidx.core:core:1.9.0] /home/ubuntu/.gradle/caches/8.12/transforms/7da3e27adb8c02368eb46247c342376b/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+27        android:name="com.securelock.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+27-->[androidx.core:core:1.9.0] /home/ubuntu/.gradle/caches/8.12/transforms/7da3e27adb8c02368eb46247c342376b/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+28        android:protectionLevel="signature" />
+28-->[androidx.core:core:1.9.0] /home/ubuntu/.gradle/caches/8.12/transforms/7da3e27adb8c02368eb46247c342376b/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+29
+30    <uses-permission android:name="com.securelock.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+30-->[androidx.core:core:1.9.0] /home/ubuntu/.gradle/caches/8.12/transforms/7da3e27adb8c02368eb46247c342376b/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+30-->[androidx.core:core:1.9.0] /home/ubuntu/.gradle/caches/8.12/transforms/7da3e27adb8c02368eb46247c342376b/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+31
+32    <application
+32-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:20:5-75:19
+33        android:allowBackup="true"
+33-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:21:9-35
+34        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+34-->[androidx.core:core:1.9.0] /home/ubuntu/.gradle/caches/8.12/transforms/7da3e27adb8c02368eb46247c342376b/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+35        android:debuggable="true"
+36        android:icon="@mipmap/ic_launcher"
+36-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:23:9-43
+37        android:label="SecureLock"
+37-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:22:9-35
+38        android:supportsRtl="true"
+38-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:24:9-35
+39        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+39-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:25:9-65
+40
+41        <!-- Roman Urdu: Main activity -->
+42        <activity
+42-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:28:9-29:38
+43            android:name="com.securelock.MainActivity"
+43-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:28:19-47
+44            android:exported="true" />
+44-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:29:13-36
+45
+46        <!-- Roman Urdu: Schedule List Activity (Launcher) -->
+47        <activity
+47-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:32:9-38:20
+48            android:name="com.securelock.ScheduleListActivity"
+48-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:32:19-55
+49            android:exported="true" >
+49-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:33:13-36
+50            <intent-filter>
+50-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:34:13-37:29
+51                <action android:name="android.intent.action.MAIN" />
+51-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:35:17-68
+51-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:35:25-66
+52
+53                <category android:name="android.intent.category.LAUNCHER" />
+53-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:36:17-76
+53-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:36:27-74
+54            </intent-filter>
+55        </activity>
+56
+57        <!-- Roman Urdu: Lock Duration Activity -->
+58        <activity
+58-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:41:9-42:39
+59            android:name="com.securelock.LockDurationActivity"
+59-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:41:19-55
+60            android:exported="false" />
+60-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:42:13-37
+61
+62        <!-- Roman Urdu: Device admin receiver -->
+63        <receiver
+63-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:47:9-57:20
+64            android:name="com.securelock.MyDeviceAdminReceiver"
+64-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:48:13-50
+65            android:exported="true"
+65-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:50:13-36
+66            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+66-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:49:13-70
+67            <meta-data
+67-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:51:13-53:64
+68                android:name="android.app.device_admin"
+68-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:52:17-56
+69                android:resource="@xml/device_admin_receiver" />
+69-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:53:17-62
+70
+71            <intent-filter>
+71-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:54:13-56:29
+72                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+72-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:55:17-81
+72-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:55:25-79
+73            </intent-filter>
+74        </receiver>
+75
+76        <!-- Roman Urdu: Lock/unlock receiver -->
+77        <receiver
+77-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:60:9-66:20
+78            android:name="com.securelock.LockReceiver"
+78-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:60:19-47
+79            android:exported="true" >
+79-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:61:13-36
+80            <intent-filter>
+80-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:62:13-65:29
+81                <action android:name="com.securelock.LOCK_DEVICE" />
+81-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:63:17-68
+81-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:63:25-66
+82                <action android:name="com.securelock.UNLOCK_DEVICE" />
+82-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:64:17-70
+82-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:64:25-68
+83            </intent-filter>
+84        </receiver>
+85
+86        <!-- Roman Urdu: Lock service for continuous locking -->
+87        <service
+87-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:69:9-73:56
+88            android:name="com.securelock.LockService"
+88-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:70:13-40
+89            android:enabled="true"
+89-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:71:13-35
+90            android:exported="false"
+90-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:72:13-37
+91            android:foregroundServiceType="dataSync" />
+91-->/workspace/SecureLock/app/src/main/AndroidManifest.xml:73:13-53
+92
+93        <provider
+93-->[androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+94            android:name="androidx.startup.InitializationProvider"
+94-->[androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+95            android:authorities="com.securelock.androidx-startup"
+95-->[androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+96            android:exported="false" >
+96-->[androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+97            <meta-data
+97-->[androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+98                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+98-->[androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+99                android:value="androidx.startup" />
+99-->[androidx.emoji2:emoji2:1.2.0] /home/ubuntu/.gradle/caches/8.12/transforms/eae2308cc30532fc3480dd892068243b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+100            <meta-data
+100-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/ubuntu/.gradle/caches/8.12/transforms/7e1771c521a17bca8ec996acad578e4d/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+101                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+101-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/ubuntu/.gradle/caches/8.12/transforms/7e1771c521a17bca8ec996acad578e4d/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+102                android:value="androidx.startup" />
+102-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/ubuntu/.gradle/caches/8.12/transforms/7e1771c521a17bca8ec996acad578e4d/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+103        </provider>
+104    </application>
+105
+106</manifest>

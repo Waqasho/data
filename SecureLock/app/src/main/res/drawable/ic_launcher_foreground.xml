@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:pivotX="54"
+        android:pivotY="54">
+        <!-- Lock Icon -->
+        <path
+            android:pathData="M54,20C44,20 36,28 36,38L36,44L32,44C30,44 28,46 28,48L28,72C28,74 30,76 32,76L76,76C78,76 80,74 80,72L80,48C80,46 78,44 76,44L72,44L72,38C72,28 64,20 54,20ZM54,24C62,24 68,30 68,38L68,44L40,44L40,38C40,30 46,24 54,24ZM54,56C56,56 58,58 58,60C58,62 56,64 54,64C52,64 50,62 50,60C50,58 52,56 54,56Z"
+            android:fillColor="#FFFFFF"/>
+    </group>
+</vector>

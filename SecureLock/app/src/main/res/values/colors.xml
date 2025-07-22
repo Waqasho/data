@@ -8,10 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!-- Custom colors for space theme -->
-    <color name="space_background">#11131A</color>
-    <color name="light_gray">#888888</color>
+    <color name="space_background">#0F0F23</color>
+    <color name="light_gray">#B0B0B0</color>
     <color name="divider">#333333</color>
-    <color name="blue_accent">#4900FF</color>
-    <color name="dark_button">#22242A</color>
+    <color name="blue_accent">#6C63FF</color>
+    <color name="dark_button">#1A1A2E</color>
     <color name="save_button">#4A90E2</color>
+    <color name="ic_launcher_background">#6C63FF</color>
 </resources> 
