@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/space_background">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="24dp">
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Scheduled Lock"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/viewSchedulesButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_check"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/white"/>
+    </LinearLayout>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Time Period Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time Period"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="32dp">
+
+                <!-- Start Time -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="START"
+                        android:textSize="12sp"
+                        android:textColor="@color/light_gray"
+                        android:layout_marginBottom="8dp"/>
+                    <LinearLayout
+                        android:id="@+id/startTimeContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/dark_button"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/startTimeText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="09:00"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                        <TextView
+                            android:id="@+id/startTimeAMPM"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AM"
+                            android:textSize="14sp"
+                            android:textColor="@color/light_gray"
+                            android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- End Time -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="END"
+                        android:textSize="12sp"
+                        android:textColor="@color/light_gray"
+                        android:layout_marginBottom="8dp"/>
+                    <LinearLayout
+                        android:id="@+id/endTimeContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@color/dark_button"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/endTimeText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="05:00"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"/>
+
+                        <TextView
+                            android:id="@+id/endTimeAMPM"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PM"
+                            android:textSize="14sp"
+                            android:textColor="@color/light_gray"
+                            android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Repeat Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Repeat"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <Button
+                    android:id="@+id/daySunday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="S"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/day_button_background"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/dayMonday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="M"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/day_button_background"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/dayTuesday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="T"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/day_button_background"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/dayWednesday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="W"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/day_button_background"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/dayThursday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="R"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/day_button_background"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/dayFriday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="F"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/day_button_background"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/daySaturday"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="A"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/day_button_background"
+                    android:layout_margin="4dp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginBottom="32dp"/>
+
+            <!-- Lock Duration Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lock Duration"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/immediateLockButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="IMMEDIATE LOCK"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/save_button_background"
+                android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:id="@+id/durationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Minutes: 5"
+                android:textSize="14sp"
+                android:textColor="@color/light_gray"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"/>
+            <SeekBar
+                android:id="@+id/durationSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="30"
+                android:progress="5"
+                android:progressTint="@color/blue_accent"
+                android:thumbTint="@color/blue_accent"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <Button
+                    android:id="@+id/duration5m"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="5m"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/duration_button_selected"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/duration10m"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="10m"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/duration_button_background"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/duration15m"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="15m"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/duration_button_background"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/duration30m"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="30m"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/duration_button_background"
+                    android:layout_margin="4dp"/>
+            </LinearLayout>
+
+            <!-- Label Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Label"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp"/>
+
+            <EditText
+                android:id="@+id/labelEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Purpose/Type of lock"
+                android:textColor="@color/white"
+                android:textColorHint="@color/light_gray"
+                android:background="@null"
+                android:padding="16dp"
+                android:textSize="16sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Save Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@color/space_background">
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Save"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/save_button_background"
+            android:drawableStart="@drawable/ic_check"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/testLockButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Test Lock Now"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:background="@drawable/duration_button_background"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+</LinearLayout> 

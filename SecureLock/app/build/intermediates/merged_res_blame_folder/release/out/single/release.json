@@ -1,0 +1,78 @@
+[
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_duration_button_selected.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/duration_button_selected.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.securelock.app-main-22:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.securelock.app-main-22:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/xml_device_admin_receiver.xml.flat",
+        "source": "com.securelock.app-main-22:/xml/device_admin_receiver.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_time_button_background.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/time_button_background.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/layout_activity_lock_duration.xml.flat",
+        "source": "com.securelock.app-main-22:/layout/activity_lock_duration.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_duration_button_background.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/duration_button_background.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/layout_activity_main.xml.flat",
+        "source": "com.securelock.app-main-22:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/layout_activity_schedule_list.xml.flat",
+        "source": "com.securelock.app-main-22:/layout/activity_schedule_list.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_ic_check.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/ic_check.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_day_button_background.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/day_button_background.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_schedule_card_background.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/schedule_card_background.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.securelock.app-main-22:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.securelock.app-main-22:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_ic_back.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/ic_back.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_day_button_selected.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/day_button_selected.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_save_button_background.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/save_button_background.xml"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.securelock.app-main-22:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.securelock.app-merged_res-21:/drawable_start_lock_button.xml.flat",
+        "source": "com.securelock.app-main-22:/drawable/start_lock_button.xml"
+    }
+]
