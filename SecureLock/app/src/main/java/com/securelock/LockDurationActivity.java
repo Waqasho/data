@@ -68,7 +68,7 @@ public class LockDurationActivity extends AppCompatActivity {
         
         // SeekBar listener with null checks
         if (durationSeekBar != null) {
-            durationSeekBar.setOnSeekBarChangeListener(new SeekBarChangeListener());
+            durationSeekBar.setOnSeekBarChangeListener(new SeekBarChangeListener(this));
         }
         
         // Start lock button with null check
@@ -111,14 +111,20 @@ public class LockDurationActivity extends AppCompatActivity {
         finish();
     }
     
-    // Separate SeekBar listener class
-    private class SeekBarChangeListener implements SeekBar.OnSeekBarChangeListener {
+    // Static SeekBar listener class to avoid null pointer issues
+    private static class SeekBarChangeListener implements SeekBar.OnSeekBarChangeListener {
+        private final LockDurationActivity activity;
+        
+        public SeekBarChangeListener(LockDurationActivity activity) {
+            this.activity = activity;
+        }
+        
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            if (fromUser && seekBar != null) {
-                selectedDuration = progress + 1; // Convert 0-179 to 1-180
-                updateDurationDisplay();
-                updatePresetButtons();
+            if (fromUser && seekBar != null && activity != null) {
+                activity.selectedDuration = progress + 1; // Convert 0-179 to 1-180
+                activity.updateDurationDisplay();
+                activity.updatePresetButtons();
             }
         }
         

@@ -19,6 +19,7 @@ import android.os.PowerManager;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.core.app.NotificationCompat;
+import java.lang.ref.WeakReference;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -158,22 +159,30 @@ public class LockService extends Service {
     }
     
     private void registerScreenReceiver() {
-        screenReceiver = new ScreenBroadcastReceiver();
+        screenReceiver = new ScreenBroadcastReceiver(this);
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_SCREEN_ON);
         filter.addAction(Intent.ACTION_USER_PRESENT);
         registerReceiver(screenReceiver, filter);
     }
     
-    // Separate BroadcastReceiver class to avoid anonymous inner class issues
-    private class ScreenBroadcastReceiver extends BroadcastReceiver {
+    // Static BroadcastReceiver class to avoid null pointer issues
+    private static class ScreenBroadcastReceiver extends BroadcastReceiver {
+        private final WeakReference<LockService> serviceRef;
+        
+        public ScreenBroadcastReceiver(LockService service) {
+            this.serviceRef = new WeakReference<>(service);
+        }
+        
         @Override
         public void onReceive(Context context, Intent intent) {
             if (isLockActive && intent != null) {
                 String action = intent.getAction();
                 if (Intent.ACTION_SCREEN_ON.equals(action) || Intent.ACTION_USER_PRESENT.equals(action)) {
-                    // Re-lock the device if lock is still active
-                    lockDeviceNow();
+                    LockService service = serviceRef.get();
+                    if (service != null) {
+                        service.lockDeviceNow();
+                    }
                 }
             }
         }
@@ -221,22 +230,25 @@ public class LockService extends Service {
     
     private void showErrorToast(final String message) {
         if (handler != null) {
-            handler.post(new ToastRunnable(message));
+            handler.post(new ToastRunnable(this, message));
         }
     }
     
-    // Separate Runnable class for Toast
-    private class ToastRunnable implements Runnable {
+    // Static Runnable class for Toast
+    private static class ToastRunnable implements Runnable {
+        private final WeakReference<Context> contextRef;
         private final String message;
         
-        public ToastRunnable(String message) {
+        public ToastRunnable(Context context, String message) {
+            this.contextRef = new WeakReference<>(context);
             this.message = message;
         }
         
         @Override
         public void run() {
-            if (LockService.this != null) {
-                Toast.makeText(LockService.this, "⚠️ " + message, Toast.LENGTH_LONG).show();
+            Context context = contextRef.get();
+            if (context != null) {
+                Toast.makeText(context, "⚠️ " + message, Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -247,14 +259,23 @@ public class LockService extends Service {
         }
         
         notificationTimer = new Timer();
-        notificationTimer.scheduleAtFixedRate(new NotificationUpdateTask(), 0, 1000); // Update every second
+        notificationTimer.scheduleAtFixedRate(new NotificationUpdateTask(this), 0, 1000);
     }
     
-    // Separate TimerTask class
-    private class NotificationUpdateTask extends TimerTask {
+    // Static TimerTask class
+    private static class NotificationUpdateTask extends TimerTask {
+        private final WeakReference<LockService> serviceRef;
+        
+        public NotificationUpdateTask(LockService service) {
+            this.serviceRef = new WeakReference<>(service);
+        }
+        
         @Override
         public void run() {
-            updateNotification();
+            LockService service = serviceRef.get();
+            if (service != null) {
+                service.updateNotification();
+            }
         }
     }
     
@@ -266,18 +287,27 @@ public class LockService extends Service {
         long delay = lockEndTime - System.currentTimeMillis();
         if (delay > 0) {
             lockTimer = new Timer();
-            lockTimer.schedule(new UnlockTask(), delay);
+            lockTimer.schedule(new UnlockTask(this), delay);
             Log.d(TAG, "Unlock scheduled in " + (delay / 1000) + " seconds");
         } else {
             stopLock();
         }
     }
     
-    // Separate TimerTask class for unlock
-    private class UnlockTask extends TimerTask {
+    // Static TimerTask class for unlock
+    private static class UnlockTask extends TimerTask {
+        private final WeakReference<LockService> serviceRef;
+        
+        public UnlockTask(LockService service) {
+            this.serviceRef = new WeakReference<>(service);
+        }
+        
         @Override
         public void run() {
-            stopLock();
+            LockService service = serviceRef.get();
+            if (service != null) {
+                service.stopLock();
+            }
         }
     }
     
@@ -363,7 +393,7 @@ public class LockService extends Service {
         
         // Show unlock toast
         if (handler != null) {
-            handler.post(new ToastRunnable("✅ Device unlocked! Lock period completed."));
+            handler.post(new ToastRunnable(this, "✅ Device unlocked! Lock period completed."));
         }
         
         Log.d(TAG, "Device unlocked successfully");
@@ -375,7 +405,7 @@ public class LockService extends Service {
                 wakeLock.acquire(3000); // Keep screen on for 3 seconds
                 
                 if (handler != null) {
-                    handler.postDelayed(new WakeLockReleaseRunnable(), 3000);
+                    handler.postDelayed(new WakeLockReleaseRunnable(wakeLock), 3000);
                 }
             }
         } catch (Exception e) {
@@ -383,10 +413,17 @@ public class LockService extends Service {
         }
     }
     
-    // Separate Runnable for wake lock release
-    private class WakeLockReleaseRunnable implements Runnable {
+    // Static Runnable for wake lock release
+    private static class WakeLockReleaseRunnable implements Runnable {
+        private final WeakReference<PowerManager.WakeLock> wakeLockRef;
+        
+        public WakeLockReleaseRunnable(PowerManager.WakeLock wakeLock) {
+            this.wakeLockRef = new WeakReference<>(wakeLock);
+        }
+        
         @Override
         public void run() {
+            PowerManager.WakeLock wakeLock = wakeLockRef.get();
             if (wakeLock != null && wakeLock.isHeld()) {
                 wakeLock.release();
             }
