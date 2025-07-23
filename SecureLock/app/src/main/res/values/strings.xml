@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Roman Urdu: App ka naam -->
+    <string name="app_name">SecureLock</string>
+    <string name="lock_time_hint">Lock Time (HH:mm)</string>
+    <string name="duration_hint">Lock Duration (minutes)</string>
+    <string name="set_schedule">Set Schedule</string>
+    <string name="activate_admin">Activate Device Admin</string>
+    <string name="status_default">Status yahan ayega</string>
+</resources> 
