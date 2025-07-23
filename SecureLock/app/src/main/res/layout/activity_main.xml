@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/space_background"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:background="@color/card_background"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@android:drawable/ic_lock_lock"
+                android:tint="@color/accent_color"
+                android:layout_marginEnd="16dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SecureLock"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Schedule Device Lock"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Time Selection -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏰ Lock Time"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Start Time -->
+            <LinearLayout
+                android:id="@+id/startTimeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/time_button_background"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Lock Start Time"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/startTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="09:00"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/startTimeAMPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AM"
+                    android:textColor="@color/accent_color"
+                    android:textSize="12sp"
+                    android:layout_marginStart="4dp" />
+
+            </LinearLayout>
+
+            <!-- End Time -->
+            <LinearLayout
+                android:id="@+id/endTimeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/time_button_background"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Lock End Time"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/endTimeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="17:00"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/endTimeAMPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PM"
+                    android:textColor="@color/accent_color"
+                    android:textSize="12sp"
+                    android:layout_marginStart="4dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Days Selection -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📅 Select Days"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Days Row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <Button
+                    android:id="@+id/daySunday"
+                    style="@style/DayButton"
+                    android:text="SUN" />
+
+                <Button
+                    android:id="@+id/dayMonday"
+                    style="@style/DayButton"
+                    android:text="MON" />
+
+                <Button
+                    android:id="@+id/dayTuesday"
+                    style="@style/DayButton"
+                    android:text="TUE" />
+
+                <Button
+                    android:id="@+id/dayWednesday"
+                    style="@style/DayButton"
+                    android:text="WED" />
+
+            </LinearLayout>
+
+            <!-- Days Row 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dayThursday"
+                    style="@style/DayButton"
+                    android:text="THU" />
+
+                <Button
+                    android:id="@+id/dayFriday"
+                    style="@style/DayButton"
+                    android:text="FRI" />
+
+                <Button
+                    android:id="@+id/daySaturday"
+                    style="@style/DayButton"
+                    android:text="SAT" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Label -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/card_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏷️ Schedule Label"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="16dp" />
+
+            <EditText
+                android:id="@+id/labelEditText"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter schedule name"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_secondary"
+                android:background="@drawable/time_button_background"
+                android:padding="12dp"
+                android:maxLines="1" />
+
+        </LinearLayout>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="32dp">
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="💾 Save Schedule"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@color/accent_color"
+                android:textColor="@color/white"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Quick Actions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/immediateLockButton"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="🔒 Lock Now"
+                    android:textSize="14sp"
+                    android:background="@color/button_unselected"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="6dp" />
+
+                <Button
+                    android:id="@+id/testLockButton"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:text="🧪 Test"
+                    android:textSize="14sp"
+                    android:background="@color/button_unselected"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="6dp" />
+
+            </LinearLayout>
+
+            <!-- View Schedules Button -->
+            <Button
+                android:id="@+id/viewSchedulesButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="📋 View All Schedules"
+                android:textSize="14sp"
+                android:background="@color/button_unselected"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Hidden Back Button (for compatibility) -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+</ScrollView> 
