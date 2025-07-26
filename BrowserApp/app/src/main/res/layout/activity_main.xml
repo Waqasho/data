@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/primary_color"
+        android:elevation="4dp">
+
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="🏠"
+            android:textSize="16sp"
+            android:background="@drawable/button_background"
+            android:layout_marginEnd="8dp" />
+
+        <EditText
+            android:id="@+id/urlEditText"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:hint="Enter URL or search..."
+            android:background="@drawable/edittext_background"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:inputType="textUri"
+            android:imeOptions="actionGo"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/goButton"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="→"
+            android:textSize="18sp"
+            android:background="@drawable/button_background" />
+
+    </LinearLayout>
+
+    <!-- WebView -->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
