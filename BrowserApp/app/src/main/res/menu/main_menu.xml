@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_refresh"
+        android:title="Refresh"
+        android:icon="@drawable/ic_refresh"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_export_cookies"
+        android:title="Export Cookies"
+        android:icon="@drawable/ic_export"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_import_cookies"
+        android:title="Import Cookies"
+        android:icon="@drawable/ic_import"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_clear_cookies"
+        android:title="Clear Cookies"
+        android:icon="@drawable/ic_clear"
+        app:showAsAction="never" />
+
+</menu>

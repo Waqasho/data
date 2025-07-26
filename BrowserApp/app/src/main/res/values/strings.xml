@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cookie Browser</string>
+    <string name="export_cookies">Export Cookies</string>
+    <string name="import_cookies">Import Cookies</string>
+    <string name="clear_cookies">Clear All Cookies</string>
+    <string name="refresh">Refresh</string>
+    <string name="home">Home</string>
+    <string name="go">Go</string>
+</resources>
