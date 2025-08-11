@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,286 +12,353 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'User Registration',
+      title: 'Unlimited Browser Windows',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6C63FF),
-          primary: const Color(0xFF6C63FF),
+          seedColor: const Color(0xFF2196F3),
+          primary: const Color(0xFF2196F3),
           secondary: const Color(0xFF4CAF50),
         ),
         useMaterial3: true,
-        inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          filled: true,
-          fillColor: Colors.white,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 16,
-          ),
-        ),
-        elevatedButtonTheme: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
       ),
-      home: const RegistrationScreen(),
+      home: const BrowserHomeScreen(),
     );
   }
 }
 
-class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({super.key});
+class BrowserHomeScreen extends StatefulWidget {
+  const BrowserHomeScreen({super.key});
 
   @override
-  State<RegistrationScreen> createState() => _RegistrationScreenState();
+  State<BrowserHomeScreen> createState() => _BrowserHomeScreenState();
 }
 
-class _RegistrationScreenState extends State<RegistrationScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _addressController = TextEditingController();
-  bool _isPasswordVisible = false;
-  bool _isLoading = false;
+class _BrowserHomeScreenState extends State<BrowserHomeScreen> {
+  final List<BrowserWindow> _windows = [];
+  int _currentWindowIndex = 0;
 
   @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    _phoneController.dispose();
-    _addressController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    // Add initial window
+    _addNewWindow();
   }
 
-  Future<void> _submitForm() async {
-    if (!_formKey.currentState!.validate()) return;
-
+  void _addNewWindow() {
     setState(() {
-      _isLoading = true;
+      _windows.add(BrowserWindow(
+        id: DateTime.now().millisecondsSinceEpoch.toString(),
+        title: 'New Tab',
+        url: 'https://www.google.com',
+      ));
+      _currentWindowIndex = _windows.length - 1;
     });
+  }
 
-    // Simulate API call
-    await Future.delayed(const Duration(seconds: 2));
+  void _removeWindow(int index) {
+    if (_windows.length > 1) {
+      setState(() {
+        _windows.removeAt(index);
+        if (_currentWindowIndex >= _windows.length) {
+          _currentWindowIndex = _windows.length - 1;
+        }
+      });
+    }
+  }
 
+  void _switchWindow(int index) {
     setState(() {
-      _isLoading = false;
+      _currentWindowIndex = index;
     });
-
-    if (!mounted) return;
-    
-    // Show success dialog
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Success!'),
-        content: const Text('Your registration was successful.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('User Registration'),
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Theme.of(context).colorScheme.primary.withOpacity(0.1),
-              Colors.white,
-            ],
+        title: const Text('Unlimited Browser Windows'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _addNewWindow,
+            tooltip: 'New Window',
           ),
-        ),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _nameController,
-                    decoration: const InputDecoration(
-                      labelText: 'Full Name',
-                      prefixIcon: Icon(Icons.person_outline),
-                    ),
-                    keyboardType: TextInputType.name,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your full name';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      prefixIcon: Icon(Icons.email_outlined),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your email';
-                      }
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                          .hasMatch(value)) {
-                        return 'Please enter a valid email';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: const Icon(Icons.lock_outline),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _isPasswordVisible
-                              ? Icons.visibility_off
-                              : Icons.visibility,
+        ],
+      ),
+      body: Column(
+        children: [
+          // Tab bar for windows
+          Container(
+            height: 50,
+            color: Colors.grey[200],
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: _windows.length,
+              itemBuilder: (context, index) {
+                final window = _windows[index];
+                final isActive = index == _currentWindowIndex;
+                
+                return Container(
+                  margin: const EdgeInsets.all(4),
+                  child: Material(
+                    color: isActive ? Colors.white : Colors.grey[300],
+                    borderRadius: BorderRadius.circular(8),
+                    child: InkWell(
+                      onTap: () => _switchWindow(index),
+                      borderRadius: BorderRadius.circular(8),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                window.title,
+                                style: TextStyle(
+                                  color: isActive ? Colors.black : Colors.grey[700],
+                                  fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            if (_windows.length > 1) ...[
+                              const SizedBox(width: 8),
+                              GestureDetector(
+                                onTap: () => _removeWindow(index),
+                                child: Icon(
+                                  Icons.close,
+                                  size: 16,
+                                  color: isActive ? Colors.grey[600] : Colors.grey[500],
+                                ),
+                              ),
+                            ],
+                          ],
                         ),
-                        onPressed: () {
-                          setState(() {
-                            _isPasswordVisible = !_isPasswordVisible;
-                          });
-                        },
                       ),
                     ),
-                    obscureText: !_isPasswordVisible,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter a password';
-                      }
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters';
-                      }
-                      return null;
-                    },
                   ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _phoneController,
-                    decoration: const InputDecoration(
-                      labelText: 'Phone Number',
-                      prefixIcon: Icon(Icons.phone_outlined),
-                      hintText: '(123) 456-7890',
-                    ),
-                    keyboardType: TextInputType.phone,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(10),
-                      _PhoneNumberFormatter(),
-                    ],
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your phone number';
-                      }
-                      final digits = value.replaceAll(RegExp(r'[^0-9]'), '');
-                      if (digits.length != 10) {
-                        return 'Please enter a valid 10-digit phone number';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _addressController,
-                    decoration: const InputDecoration(
-                      labelText: 'Address',
-                      prefixIcon: Icon(Icons.home_outlined),
-                      alignLabelWithHint: true,
-                    ),
-                    maxLines: 3,
-                    textInputAction: TextInputAction.done,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return 'Please enter your address';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 32),
-                  ElevatedButton(
-                    onPressed: _isLoading ? null : _submitForm,
-                    child: _isLoading
-                        ? const SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : const Text(
-                            'Submit',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
           ),
-        ),
+          // Browser content
+          Expanded(
+            child: _windows.isEmpty
+                ? const Center(child: Text('No windows available'))
+                : BrowserWindowWidget(
+                    window: _windows[_currentWindowIndex],
+                    onTitleChanged: (title) {
+                      setState(() {
+                        _windows[_currentWindowIndex].title = title;
+                      });
+                    },
+                    onUrlChanged: (url) {
+                      setState(() {
+                        _windows[_currentWindowIndex].url = url;
+                      });
+                    },
+                  ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _addNewWindow,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+        child: const Icon(Icons.add),
       ),
     );
   }
 }
 
-class _PhoneNumberFormatter extends TextInputFormatter {
+class BrowserWindow {
+  final String id;
+  String title;
+  String url;
+
+  BrowserWindow({
+    required this.id,
+    required this.title,
+    required this.url,
+  });
+}
+
+class BrowserWindowWidget extends StatefulWidget {
+  final BrowserWindow window;
+  final Function(String) onTitleChanged;
+  final Function(String) onUrlChanged;
+
+  const BrowserWindowWidget({
+    super.key,
+    required this.window,
+    required this.onTitleChanged,
+    required this.onUrlChanged,
+  });
+
   @override
-  TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
-  ) {
-    final text = newValue.text.replaceAll(RegExp(r'[^0-9]'), '');
-    
-    if (text.isEmpty) return newValue;
-    
-    String formattedText = '';
-    
-    if (text.length >= 1) {
-      formattedText = '(${text.substring(0, text.length > 3 ? 3 : text.length)}';
+  State<BrowserWindowWidget> createState() => _BrowserWindowWidgetState();
+}
+
+class _BrowserWindowWidgetState extends State<BrowserWindowWidget> {
+  late WebViewController _controller;
+  final TextEditingController _urlController = TextEditingController();
+  bool _isLoading = false;
+  bool _canGoBack = false;
+  bool _canGoForward = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _urlController.text = widget.window.url;
+    _initializeWebView();
+  }
+
+  void _initializeWebView() {
+    _controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            // Update loading progress
+          },
+          onPageStarted: (String url) {
+            setState(() {
+              _isLoading = true;
+            });
+          },
+          onPageFinished: (String url) {
+            setState(() {
+              _isLoading = false;
+            });
+            _updateNavigationState();
+            _updateTitle();
+          },
+          onNavigationRequest: (NavigationRequest request) {
+            widget.onUrlChanged(request.url);
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(widget.window.url));
+  }
+
+  void _updateNavigationState() {
+    _controller.canGoBack().then((canGoBack) {
+      if (mounted) {
+        setState(() {
+          _canGoBack = canGoBack;
+        });
+      }
+    });
+    _controller.canGoForward().then((canGoForward) {
+      if (mounted) {
+        setState(() {
+          _canGoForward = canGoForward;
+        });
+      }
+    });
+  }
+
+  void _updateTitle() {
+    _controller.getTitle().then((title) {
+      if (mounted && title != null) {
+        widget.onTitleChanged(title);
+      }
+    });
+  }
+
+  void _navigateToUrl() {
+    String url = _urlController.text.trim();
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'https://$url';
     }
-    if (text.length > 3) {
-      formattedText += ') ${text.substring(3, text.length > 6 ? 6 : text.length)}';
-    }
-    if (text.length > 6) {
-      formattedText += '-${text.substring(6, text.length > 10 ? 10 : text.length)}';
-    }
     
-    return TextEditingValue(
-      text: formattedText,
-      selection: TextSelection.collapsed(offset: formattedText.length),
+    widget.onUrlChanged(url);
+    _controller.loadRequest(Uri.parse(url));
+  }
+
+  void _refresh() {
+    _controller.reload();
+  }
+
+  void _goBack() {
+    _controller.goBack();
+  }
+
+  void _goForward() {
+    _controller.goForward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // Navigation bar
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colors.grey[100],
+          child: Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: _canGoBack ? _goBack : null,
+                tooltip: 'Go Back',
+              ),
+              IconButton(
+                icon: const Icon(Icons.arrow_forward),
+                onPressed: _canGoForward ? _goForward : null,
+                tooltip: 'Go Forward',
+              ),
+              IconButton(
+                icon: const Icon(Icons.refresh),
+                onPressed: _refresh,
+                tooltip: 'Refresh',
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: TextField(
+                  controller: _urlController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter URL',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.search),
+                      onPressed: _navigateToUrl,
+                    ),
+                  ),
+                  onSubmitted: (_) => _navigateToUrl(),
+                ),
+              ),
+              const SizedBox(width: 8),
+              if (_isLoading)
+                const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+            ],
+          ),
+        ),
+        // WebView content
+        Expanded(
+          child: WebViewWidget(controller: _controller),
+        ),
+      ],
     );
+  }
+
+  @override
+  void dispose() {
+    _urlController.dispose();
+    super.dispose();
   }
 }
