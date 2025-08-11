@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Completely permissive configuration for all websites -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+    
+    <!-- Specific configuration for Google Static Content (gstatic.com) -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">gstatic.com</domain>
+        <domain includeSubdomains="true">www.gstatic.com</domain>
+        <domain includeSubdomains="true">ssl.gstatic.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    
+    <!-- YouTube and Google domains -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">youtube.com</domain>
+        <domain includeSubdomains="true">www.youtube.com</domain>
+        <domain includeSubdomains="true">m.youtube.com</domain>
+        <domain includeSubdomains="true">googlevideo.com</domain>
+        <domain includeSubdomains="true">ytimg.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+    
+    <!-- Allow all domains -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">*</domain>
+    </domain-config>
+    
+    <!-- Debug overrides for development -->
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>
