@@ -1,0 +1,335 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="210" tvg-name="T Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/t-sports-7s4kzg5v6hci.jpg" group-title="Cricket(ক্রিকেট)",T Sports
+http://103.179.25.147:8181/T-SPORTS/video.m3u8
+#EXTINF:-1 tvg-id="208" tvg-name="T Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/t-sports-fj0s70nvode3.jpg" group-title="Cricket(ক্রিকেট)",T Sports
+http://103.179.25.147:8181/liveevent/index.m3u8
+#EXTINF:-1 tvg-id="188" tvg-name="WILLOW TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/willow-tv-tooa5f6uc3d9.jpeg" group-title="Cricket(ক্রিকেট)",WILLOW TV
+http://103.179.25.147:8181/willow/index.m3u8
+#EXTINF:-1 tvg-id="173" tvg-name="A sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/a-sports.png" group-title="Cricket(ক্রিকেট)",A sports
+http://103.179.25.147:8181/ten_cric/index.m3u8
+#EXTINF:-1 tvg-id="172" tvg-name="STAR SPORTS 1 (HD)" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-sports-1-hd.jpg" group-title="Cricket(ক্রিকেট)",STAR SPORTS 1 (HD)
+http://103.179.25.147:8181/sp1/index.m3u8
+#EXTINF:-1 tvg-id="171" tvg-name="STAR SPORTS 2 (HD)" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-sports-2-hd.jpg" group-title="Cricket(ক্রিকেট)",STAR SPORTS 2 (HD)
+http://103.179.25.147:8181/sp2/index.m3u8
+#EXTINF:-1 tvg-id="166" tvg-name="Sky Sports Cricket" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sky-sports-cricket.jpeg" group-title="Cricket(ক্রিকেট)",Sky Sports Cricket
+https://d382r3rgbxdixq.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/STIRR-MuxIP-CricketGold/418.m3u8
+#EXTINF:-1 tvg-id="164" tvg-name="Ten Cricket" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/ten-cricket.jpeg" group-title="Cricket(ক্রিকেট)",Ten Cricket
+http://103.179.25.147:8181/ten_cric/index.m3u8
+#EXTINF:-1 tvg-id="163" tvg-name="PTV Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/ptv-sports.jpg" group-title="Cricket(ক্রিকেট)",PTV Sports
+http://103.179.25.147:8181/PTVPK/index.m3u8
+#EXTINF:-1 tvg-id="151" tvg-name="T Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/t-sports.jpeg" group-title="Cricket(ক্রিকেট)",T Sports
+http://103.179.25.147:8181/T-SPORTS/index.m3u8
+#EXTINF:-1 tvg-id="192" tvg-name="Sky Sports Premier League" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sky-sports-premier-league.png" group-title="Football(ফুটবল)",Sky Sports Premier League
+http://proximitybd.xyz/crichd/CRICHD/master.m3u8/?c=skysfott
+#EXTINF:-1 tvg-id="160" tvg-name="Sony TEN 5" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-ten-5.png" group-title="Football(ফুটবল)",Sony TEN 5
+http://103.179.25.147:8181/sony5/index.m3u8
+#EXTINF:-1 tvg-id="158" tvg-name="Sony TEN 3" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-ten-3.png" group-title="Football(ফুটবল)",Sony TEN 3
+http://103.179.25.147:8181/sony3/index.m3u8
+#EXTINF:-1 tvg-id="157" tvg-name="Sony TEN 2" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-ten-2.png" group-title="Football(ফুটবল)",Sony TEN 2
+http://103.179.25.147:8181/sony_2/index.m3u8
+#EXTINF:-1 tvg-id="156" tvg-name="Sony TEN1" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-ten1.png" group-title="Football(ফুটবল)",Sony TEN1
+http://103.179.25.147:8181/sony1/index.m3u8
+#EXTINF:-1 tvg-id="155" tvg-name="Star Sports 1 SELECT" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-sports-1-select.jpeg" group-title="Football(ফুটবল)",Star Sports 1 SELECT
+http://103.179.25.147:8181/Starspselect/index.m3u8
+#EXTINF:-1 tvg-id="154" tvg-name="STAR SPORTS  Select 2" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-sports-select-2.jpeg" group-title="Football(ফুটবল)",STAR SPORTS  Select 2
+http://172.16.29.2:8090/hls/StarSportsSelect2HD.m3u8
+#EXTINF:-1 tvg-id="153" tvg-name="Bein Sports 1" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/bein-sports-1.png" group-title="Football(ফুটবল)",Bein Sports 1
+https://bein-esp-xumo.amagi.tv/playlistR1080p.m3u8
+#EXTINF:-1 tvg-id="152" tvg-name="Bein Sports  Premium 2" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/bein-sports-premium.png" group-title="Football(ফুটবল)",Bein Sports  Premium 2
+https://rmtv.akamaized.net/hls/live/2043153/rmtv-es-web/bitrate_3.m3u8
+#EXTINF:-1 tvg-id="150" tvg-name="Football Live" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/football-live-sxzh7242ap7v.jpg" group-title="Football(ফুটবল)",Football Live
+ts:http://195.26.87.217/live.ts?channelId=74567&uid=3453&deviceMac=00:1A:79:01:04:AC
+#EXTINF:-1 tvg-id="149" tvg-name="Ad Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/ad-sports.png" group-title="Football(ফুটবল)",Ad Sports
+https://svs.itworkscdn.net/smc4sportslive/smc4.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="148" tvg-name="Dubai Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/dubai-sports.png" group-title="Football(ফুটবল)",Dubai Sports
+http://dmitwlvvll.cdn.mangomolo.com/dubaisportshd/smil:dubaisportshd.smil/chunklist_b300000.m3u8
+#EXTINF:-1 tvg-id="147" tvg-name="LALIGA" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/laliga-r1wau6nnzzyq.jpeg" group-title="Football(ফুটবল)",LALIGA
+https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_3360.m3u8
+#EXTINF:-1 tvg-id="145" tvg-name="Via Play" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/via-play.png" group-title="Football(ফুটবল)",Via Play
+https://linear-439.frequency.stream/439/hls/master/playlist.m3u8
+#EXTINF:-1 tvg-id="144" tvg-name="Uzbekistan Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/uzbekistan-sports.png" group-title="Football(ফুটবল)",Uzbekistan Sports
+https://barcatvlive2.flumotion.cloud/playlist.m3u8
+#EXTINF:-1 tvg-id="143" tvg-name="SPORTS 5 PLUS" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sports-5-plus.png" group-title="Football(ফুটবল)",SPORTS 5 PLUS
+https://edge1.laotv.la/live/TSport2/index.m3u8
+#EXTINF:-1 tvg-id="142" tvg-name="LALIGA" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/laliga.png" group-title="Football(ফুটবল)",LALIGA
+https://rmtv.akamaized.net/hls/live/2043154/rmtv-en-web/bitrate_3.m3u8
+#EXTINF:-1 tvg-id="141" tvg-name="RTA Sport" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/rta-sport-bz2nvvo90s49.jpeg" group-title="Football(ফুটবল)",RTA Sport
+https://rtatv.akamaized.net/Content/HLS/Live/channel(RTA3)/variant.m3u8
+#EXTINF:-1 tvg-id="140" tvg-name="Sky sport" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sky-sport.jpeg" group-title="Football(ফুটবল)",Sky sport
+https://donelfantastic.github.io/live/skysportsNz2.m3u8
+#EXTINF:-1 tvg-id="139" tvg-name="Champion TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/champion-tv.jpeg" group-title="Football(ফুটবল)",Champion TV
+https://linear-p.media.skyone.co.nz/primeplus1.clear_2.m3u8
+#EXTINF:-1 tvg-id="138" tvg-name="BT SPORTS 4" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/bt-sports-4.png" group-title="Football(ফুটবল)",BT SPORTS 4
+https://catowrap.live/mrgamingbtsport4.m3u8
+#EXTINF:-1 tvg-id="137" tvg-name="TVN Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/tvn-sports.jpeg" group-title="Football(ফুটবল)",TVN Sports
+https://edge1.laotv.la/live/TSport2/index.m3u8
+#EXTINF:-1 tvg-id="136" tvg-name="Max Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/max-sports.png" group-title="Football(ফুটবল)",Max Sports
+https://bcovlive-a.akamaihd.net/r2d2c4ca5bf57456fb1d16255c1a535c8/eu-west-1/eu-west-1/6058004203001/profile_2/chunklist.m3u8
+#EXTINF:-1 tvg-id="133" tvg-name="TNT SPORTS 3" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/tnt-sports-3.png" group-title="Football(ফুটবল)",TNT SPORTS 3
+https://firetv.padmaflix.net/xtream/app.php?id=4626
+#EXTINF:-1 tvg-id="131" tvg-name="TNT SPORTS 2" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/tnt-sports-2.jpeg" group-title="Football(ফুটবল)",TNT SPORTS 2
+http://103.179.25.147:8181/tnt2/index.m3u8
+#EXTINF:-1 tvg-id="130" tvg-name="TNT SPORTS 1" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/tnt-sports-1.jpg" group-title="Football(ফুটবল)",TNT SPORTS 1
+http://103.179.25.147:8181/tnt1/index.m3u8
+#EXTINF:-1 tvg-id="174" tvg-name="NTV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/ntv.jpeg" group-title="Bangladesh(বাংলাদেশ)",NTV
+http://103.230.105.252:1935/live/ntv/index.m3u8
+#EXTINF:-1 tvg-id="168" tvg-name="EKATTOR" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/ekattor.png" group-title="Bangladesh(বাংলাদেশ)",EKATTOR
+http://103.179.25.147:8181/ekattor/index.m3u8
+#EXTINF:-1 tvg-id="167" tvg-name="maasranga" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/maasranga.png" group-title="Bangladesh(বাংলাদেশ)",maasranga
+http://103.179.25.147:8181/maasrangaTV/index.m3u8
+#EXTINF:-1 tvg-id="30" tvg-name="Jamuna TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/jamuna-tv.png" group-title="Bangladesh(বাংলাদেশ)",Jamuna TV
+http://103.179.25.147:8181/sn_jamuna/index.m3u8
+#EXTINF:-1 tvg-id="28" tvg-name="Nexus TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/nexus-tv.jpg" group-title="Bangladesh(বাংলাদেশ)",Nexus TV
+http://103.179.25.147:8181/nexus/index.m3u8
+#EXTINF:-1 tvg-id="27" tvg-name="News 24" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/news-24.png" group-title="Bangladesh(বাংলাদেশ)",News 24
+http://103.179.25.147:8181/news/24/index.m3u8
+#EXTINF:-1 tvg-id="26" tvg-name="Movie Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/movie-bangla.jpg" group-title="Bangladesh(বাংলাদেশ)",Movie Bangla
+http://alvetv.com/moviebanglatv/8080/index.m3u8
+#EXTINF:-1 tvg-id="25" tvg-name="INDEPENDENT" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/independent.jpg" group-title="Bangladesh(বাংলাদেশ)",INDEPENDENT
+http://aria.padmaflix.net/cld/stream.php?id=1753784720155&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="24" tvg-name="DBC NEWS" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/dbc-news.jpg" group-title="Bangladesh(বাংলাদেশ)",DBC NEWS
+http://aria.padmaflix.net/cld/stream.php?id=1753784748853&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="23" tvg-name="NANDAN TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/nandan-tv.png" group-title="Bangladesh(বাংলাদেশ)",NANDAN TV
+https://jolshabd.com/live/mbanglatv/playlist.m3u8
+#EXTINF:-1 tvg-id="22" tvg-name="Global Television" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/global-television.png" group-title="Bangladesh(বাংলাদেশ)",Global Television
+http://aria.padmaflix.net/cld/stream.php?id=1743554809292&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="21" tvg-name="Ekushey ETV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/varendra-tv.jpg" group-title="Bangladesh(বাংলাদেশ)",Ekushey ETV
+https://ekusheyserver.com/hls-live/livepkgr/_definst_/liveevent/livestream3.m3u8
+#EXTINF:-1 tvg-id="20" tvg-name="Somoy TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/somoy-tv.png" group-title="Bangladesh(বাংলাদেশ)",Somoy TV
+https://owrcovcrpy.gpcdn.net/bpk-tv/1702/output/index.m3u8
+#EXTINF:-1 tvg-id="18" tvg-name="Channel 24" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/channel-24.png" group-title="Bangladesh(বাংলাদেশ)",Channel 24
+http://103.179.25.147:8181/Channel24ns/index.m3u8
+#EXTINF:-1 tvg-id="17" tvg-name="EKHON TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/ekhon-tv.jfif" group-title="Bangladesh(বাংলাদেশ)",EKHON TV
+http://103.179.25.147:8181/ekhon/index.m3u8
+#EXTINF:-1 tvg-id="16" tvg-name="Desh TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/desh-tv.jpg" group-title="Bangladesh(বাংলাদেশ)",Desh TV
+https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDDEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFsaWRtaW51aiPhnPTI2/deshtv.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="15" tvg-name="Deshi tv 24" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/deshi-tv-24.png" group-title="Bangladesh(বাংলাদেশ)",Deshi tv 24
+https://deshitv.deshitv24.net/live/myStream/playlist.m3u8
+#EXTINF:-1 tvg-id="12" tvg-name="DEEPTO" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/deepto.png" group-title="Bangladesh(বাংলাদেশ)",DEEPTO
+https://byphdgllyk.gpcdn.net/hls/deeptotv/index.m3u8
+#EXTINF:-1 tvg-id="11" tvg-name="MY TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/my-tv.png" group-title="Bangladesh(বাংলাদেশ)",MY TV
+https://mytvbangla.com/0.m3u8
+#EXTINF:-1 tvg-id="10" tvg-name="Bangla Vision" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/bangla-vision.png" group-title="Bangladesh(বাংলাদেশ)",Bangla Vision
+https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDDEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFsaWRtaW51aiPhnPTI2/banglav000.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="9" tvg-name="RTV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/rtv.png" group-title="Bangladesh(বাংলাদেশ)",RTV
+http://aria.padmaflix.net/cld/stream.php?id=1743551064875&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="8" tvg-name="Channel I" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/channel-i.png" group-title="Bangladesh(বাংলাদেশ)",Channel I
+http://103.179.25.147:8181/channel_i_NS/index.m3u8
+#EXTINF:-1 tvg-id="6" tvg-name="Boishakhi TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/boishakhi-tv.png" group-title="Bangladesh(বাংলাদেশ)",Boishakhi TV
+http://aria.padmaflix.net/cld/stream.php?id=1753784734438&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="5" tvg-name="BTV TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/btv-tv.jpeg" group-title="Bangladesh(বাংলাদেশ)",BTV TV
+http://103.230.105.252:1935/live/btv/manifest.m3u8
+#EXTINF:-1 tvg-id="4" tvg-name="ATN BANGLA" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/atn-bangla.png" group-title="Bangladesh(বাংলাদেশ)",ATN BANGLA
+https://owrcovcrpy.gpcdn.net/bpk-tv/1722/output/index.m3u8
+#EXTINF:-1 tvg-id="3" tvg-name="SA TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sa-tv.png" group-title="Bangladesh(বাংলাদেশ)",SA TV
+http://103.179.25.147:8181/atn_news/index.m3u8
+#EXTINF:-1 tvg-id="2" tvg-name="Ananda TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/ananda-tv.png" group-title="Bangladesh(বাংলাদেশ)",Ananda TV
+https://app24.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMFDDEHGcfRgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcEdsEfeDeKiNkVN3PTOmdFsaWRtaW51aiPhnPTI2/anandatv.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="1" tvg-name="ASIAN TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/asian-tv.png" group-title="Bangladesh(বাংলাদেশ)",ASIAN TV
+http://aria.padmaflix.net/cld/stream.php?id=1754777307068&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="204" tvg-name="ZEE BANGLA HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/zee-bangla-hd-689mhn7ob5ry.png" group-title="Indian Bangla(ভারতীয় বাংলা)",ZEE BANGLA HD
+http://103.179.25.147:8181/zeeBangla/index.m3u8
+#EXTINF:-1 tvg-id="196" tvg-name="Enterr 10 Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/enterr-10-bangla-01uyc3fy4sxp.jpeg" group-title="Indian Bangla(ভারতীয় বাংলা)",Enterr 10 Bangla
+https://live-bangla.akamaized.net/liveabr/pub-iobanglakp3sff/live_720p/chunks.m3u8
+#EXTINF:-1 tvg-id="183" tvg-name="Sun Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sun-bangla.jpeg" group-title="Indian Bangla(ভারতীয় বাংলা)",Sun Bangla
+https://live.sanonda.tv/sanonda/index.m3u8
+#EXTINF:-1 tvg-id="179" tvg-name="Bangla+" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/bangla.jpeg" group-title="Indian Bangla(ভারতীয় বাংলা)",Bangla+
+http://live.dataplayer.in:8080/live/rmmeghnatv.m3u8
+#EXTINF:-1 tvg-id="178" tvg-name="ABP ANANDA" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/abp-ananda.png" group-title="Indian Bangla(ভারতীয় বাংলা)",ABP ANANDA
+https://abplivetv.akamaized.net/hls/live/2043012/ananda/master.m3u8
+#EXTINF:-1 tvg-id="176" tvg-name="Khusboo Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/zee-24.jpeg" group-title="Indian Bangla(ভারতীয় বাংলা)",Khusboo Bangla
+https://live-stream.utkalbongo.com/utkalbongo/stream7/hls/montvlivestream.m3u8
+#EXTINF:-1 tvg-id="162" tvg-name="Aakash Aath" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/aakash-aath.jpeg" group-title="Indian Bangla(ভারতীয় বাংলা)",Aakash Aath
+http://38.96.178.201/live/AkashAath/index.m3u8
+#EXTINF:-1 tvg-id="101" tvg-name="Sony AATH" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-aath.png" group-title="Indian Bangla(ভারতীয় বাংলা)",Sony AATH
+http://103.179.25.147:8181/Sony_aath/index.m3u8
+#EXTINF:-1 tvg-id="100" tvg-name="Star Jalsha SD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-jalsha-hd.png" group-title="Indian Bangla(ভারতীয় বাংলা)",Star Jalsha SD
+http://103.179.25.147:8181/STAR_JALSHA/index.m3u8
+#EXTINF:-1 tvg-id="99" tvg-name="Zee Bangla SD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/zee-bangla-hd.png" group-title="Indian Bangla(ভারতীয় বাংলা)",Zee Bangla SD
+https://yupptvcatchupire.yuppcdn.net/preview/zeebangla/2500.m3u8
+#EXTINF:-1 tvg-id="98" tvg-name="Jalsha Movies" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/jalsha-movies.png" group-title="Indian Bangla(ভারতীয় বাংলা)",Jalsha Movies
+http://103.179.25.147:8181/JalshaMv/index.m3u8
+#EXTINF:-1 tvg-id="97" tvg-name="Colors Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/colors-bangla.png" group-title="Indian Bangla(ভারতীয় বাংলা)",Colors Bangla
+http://103.179.25.147:8181/colorsbanglasd/index.m3u8
+#EXTINF:-1 tvg-id="94" tvg-name="Zee Bangla CINEMA HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/zee-bangla-cinema-hd.png" group-title="Indian Bangla(ভারতীয় বাংলা)",Zee Bangla CINEMA HD
+http://aria.padmaflix.net/cld/stream.php?id=1744662526474&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="93" tvg-name="Ruposhi Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/ruposhi-bangla.jpeg" group-title="Indian Bangla(ভারতীয় বাংলা)",Ruposhi Bangla
+https://cdn-4.pishow.tv/live/1039/1039_2.m3u8
+#EXTINF:-1 tvg-id="75" tvg-name="Star Jalsha HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-jalsha-hd-hb5jq4ij3hjz.jpg" group-title="Indian Bangla(ভারতীয় বাংলা)",Star Jalsha HD
+https://live.dinesh29.com.np/stream/jiotvplus/starjalshahd/stream_0.m3u8?uid=
+#EXTINF:-1 tvg-id="215" tvg-name="Sun TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sun-tv.jpeg" group-title="Hindi(হিন্দি)",Sun TV
+https://cc-jytb1qhmgqh5a.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-jytb1qhmgqh5a/playlist.m3u8
+#EXTINF:-1 tvg-id="206" tvg-name="The Q" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/the-q.png" group-title="Hindi(হিন্দি)",The Q
+http://89.187.189.98/MOVIESNOWHD/index.m3u8
+#EXTINF:-1 tvg-id="182" tvg-name="Sony Entertainment" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-entertainment.png" group-title="Hindi(হিন্দি)",Sony Entertainment
+http://103.179.25.147:8181/sony_set/index.m3u8
+#EXTINF:-1 tvg-id="126" tvg-name="Zee Cinema HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/zee-cinema-hd.png" group-title="Hindi(হিন্দি)",Zee Cinema HD
+http://103.179.25.147:8181/ZEECINEMAHIN/index.m3u8
+#EXTINF:-1 tvg-id="125" tvg-name="Bollywood HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/bollywood-hd.jpeg" group-title="Hindi(হিন্দি)",Bollywood HD
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/bollywood-hd/manifest.m3u8
+#EXTINF:-1 tvg-id="124" tvg-name="Sony Max HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-max-hd.png" group-title="Hindi(হিন্দি)",Sony Max HD
+http://103.179.25.147:8181/Sony_max_hd/index.m3u8
+#EXTINF:-1 tvg-id="123" tvg-name="Sony SAB HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-sab-hd.png" group-title="Hindi(হিন্দি)",Sony SAB HD
+http://103.179.25.147:8181/Sony_sab_hd/index.m3u8
+#EXTINF:-1 tvg-id="122" tvg-name="Colors Cineplex Bollywood" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/colors-cineplex-bollywood.jpeg" group-title="Hindi(হিন্দি)",Colors Cineplex Bollywood
+http://103.179.25.147:8181/colors_cineplex/index.m3u8
+#EXTINF:-1 tvg-id="120" tvg-name="Dangal" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/dangal.jpeg" group-title="Hindi(হিন্দি)",Dangal
+https://live-dangal.akamaized.net/liveabr/playlist.m3u8
+#EXTINF:-1 tvg-id="119" tvg-name="Colors HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/colors-hd.png" group-title="Hindi(হিন্দি)",Colors HD
+http://103.179.25.147:8181/colorshd/index.m3u8
+#EXTINF:-1 tvg-id="118" tvg-name="& TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/tv.jpg" group-title="Hindi(হিন্দি)",& TV
+https://amg01117-amg01117c1-amgplt0165.playout.now3.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="117" tvg-name="Nazara" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/nazara.jpg" group-title="Hindi(হিন্দি)",Nazara
+https://amg01448-samsungindia-amg01448c6-samsung-in-2297.playouts.now.amagi.tv/playlist/amg01448-samsungindia-comedyking-samsungin/playlist.m3u8?ads.did=%7BPSID%7D&ads.dnt=%7BTARGETOPT%7D&ads.app_domain=%7BAPP_DOMAIN%7D&ads.app_name=%7BAPP_NAME%7D&ads.coppa=0
+#EXTINF:-1 tvg-id="115" tvg-name="Sony MAX 2" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-max-2.jpg" group-title="Hindi(হিন্দি)",Sony MAX 2
+http://103.179.25.147:8181/sony_max2/index.m3u8
+#EXTINF:-1 tvg-id="113" tvg-name="GoldMines" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/goldmines.png" group-title="Hindi(হিন্দি)",GoldMines
+https://livecdn.live247stream.com/joomusic/tv/playlist.m3u8
+#EXTINF:-1 tvg-id="112" tvg-name="Star Gold" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-gold.png" group-title="Hindi(হিন্দি)",Star Gold
+http://103.179.25.147:8181/StarGoldIN/index.m3u8
+#EXTINF:-1 tvg-id="111" tvg-name="Shemaroo Bollywood" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/shemaroo-bollywood.jpg" group-title="Hindi(হিন্দি)",Shemaroo Bollywood
+https://amg00864-shemarooenterta-shemabollywood-ono-nlwbw.amagi.tv/playlist/amg00864-shemarooenterta-shemabollywood-ono/playlist.m3u8
+#EXTINF:-1 tvg-id="110" tvg-name="ZEE TV HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/zee-tv-hd.jpeg" group-title="Hindi(হিন্দি)",ZEE TV HD
+http://103.179.25.147:8181/Zee_TV/index.m3u8
+#EXTINF:-1 tvg-id="109" tvg-name="Enterr 10" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/enterr-10.png" group-title="Hindi(হিন্দি)",Enterr 10
+https://anjantvevent.pc.cdn.bitgravity.com/anjantv/live/amlst:event_anjan_,b400,b800,b1024,b1200,b1500,b4000,.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="107" tvg-name="& Picture" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/picture.png" group-title="Hindi(হিন্দি)",& Picture
+http://103.179.25.147:8181/anandatv/index.m3u8
+#EXTINF:-1 tvg-id="105" tvg-name="MTV Indian" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/mtv-indian.png" group-title="Hindi(হিন্দি)",MTV Indian
+http://stream.vstartv.org/p/3900/hybrid/play.m3u8
+#EXTINF:-1 tvg-id="103" tvg-name="Sony Pal" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-pal.png" group-title="Hindi(হিন্দি)",Sony Pal
+http://103.179.25.147:8181/Sony_pal/index.m3u8
+#EXTINF:-1 tvg-id="102" tvg-name="Star Plus" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-plus.png" group-title="Hindi(হিন্দি)",Star Plus
+http://103.179.25.147:8181/StarPlusIN/index.m3u8
+#EXTINF:-1 tvg-id="79" tvg-name="Zee Cafe HD" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/zee-cafe-hd.png" group-title="English(ইংলিশ)",Zee Cafe HD
+http://aria.padmaflix.net/tango/watch.php?id=16&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="78" tvg-name="Star 2" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/star-2.png" group-title="English(ইংলিশ)",Star 2
+https://magnoliaa-cinelife-oando-n6z8u.amagi.tv/playlist/magnoliaA-cinelife-oando/cb54381b6573678e84cb3e63cef343a0f9591fde1d6988693eb5518975d1073edce2a59caa08ff16388f1ede7f0a66413a3e951fda77118fd87eb141453c5728cfffe729a2c05616b7db083429b56a062a866a68ac39437ed0e21f48a238b6720a5aa82a66443d80b846ac7450db80148b61299bce8c37683f03409a5e5afba358b1ebe65a45df3ea7b61c55932f17e49f43c8814aa6d1d25e9e5e8427f54295c6f1d8db118682f3db986d965c9ccc0b07fba25dd1a37fb7d49d653898743b4e6c3a8cc1b2cd3ef702da21269cded8b6648578a630eea912529f0899448572fd0311a796932f83d7d5fb4a4032a5847f6831a9f6a985f5775cd5dc55939bbf222fe393307046c26c9244415cc1ad9b44d6837d92c7f643adce54e297b13cd56d721bbe4abb6ad64febd4fd99726646620f03bc90c3f062f626c771a4c2126e090314edd262cd88dd5127710fa8b41e854355e980cbb4d6006d9e3b5b42be34901b247cdc38694b
+#EXTINF:-1 tvg-id="77" tvg-name="Show Time" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/show-time.png" group-title="English(ইংলিশ)",Show Time
+https://scripps-ionmystery-1-us.xumo.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="76" tvg-name="HBO +" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/hbo.jpeg" group-title="English(ইংলিশ)",HBO +
+https://content.uplynk.com/channel/3324f2467c414329b3b0cc5cd987b6be.m3u8
+#EXTINF:-1 tvg-id="74" tvg-name="Sony PIX" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-pix.png" group-title="English(ইংলিশ)",Sony PIX
+http://web.onair-radio.eu:1935/groovytv/groovytv/playlist.m3u8
+#EXTINF:-1 tvg-id="73" tvg-name="DW" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/dw.jpg" group-title="English(ইংলিশ)",DW
+https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/stream03/streamPlaylist.m3u8
+#EXTINF:-1 tvg-id="72" tvg-name="Comedy King" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/comedy-king.jpeg" group-title="English(ইংলিশ)",Comedy King
+https://amg01448-samsungindia-amg01448c6-samsung-in-2297.playouts.now.amagi.tv/playlist/amg01448-samsungindia-comedyking-samsungin/playlist.m3u8
+#EXTINF:-1 tvg-id="71" tvg-name="arirang" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/arirang.jpg" group-title="English(ইংলিশ)",arirang
+https://n18syndication.akamaized.net/bpk-tv/CNN_News18_NW18_MOB/output01/index.m3u8
+#EXTINF:-1 tvg-id="70" tvg-name="Al Jazeera" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/al-jazeera.jpg" group-title="English(ইংলিশ)",Al Jazeera
+https://live-hls-web-aje.getaj.net/AJE/06.m3u8
+#EXTINF:-1 tvg-id="69" tvg-name="ADN 40" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/adn-40.png" group-title="English(ইংলিশ)",ADN 40
+https://fox-foxnewsnow-vizio.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="68" tvg-name="Africa News" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/africa-news.png" group-title="English(ইংলিশ)",Africa News
+https://rt-fra.rttv.com/live/rtfrance/playlist_4500Kb.m3u8
+#EXTINF:-1 tvg-id="67" tvg-name="& Flix" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/flix.png" group-title="English(ইংলিশ)",& Flix
+https://amg01076-lightningintern-actionhollywood-samsungnz-82rry.amagi.tv/playlist/amg01076-lightningintern-actionhollywood-samsungnz/playlist.m3u8
+#EXTINF:-1 tvg-id="66" tvg-name="CBS NEWS" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/cbs-news.png" group-title="English(ইংলিশ)",CBS NEWS
+https://rt-glb.rttv.com/dvr/rtnews/playlist_4500Kb.m3u8
+#EXTINF:-1 tvg-id="65" tvg-name="CC TV+" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/cc-tv.jpg" group-title="English(ইংলিশ)",CC TV+
+https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="62" tvg-name="Movie Spehe" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/movie-spehe.jpeg" group-title="English(ইংলিশ)",Movie Spehe
+https://moviesphereuk-samsunguk.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="180" tvg-name="Pop Max" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/nick-jr.png" group-title="Kids(শিশু)",Pop Max
+https://vg-theqlive.akamaized.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-640586/main.m3u8
+#EXTINF:-1 tvg-id="43" tvg-name="Rongeen TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/rongeen-tv.png" group-title="Kids(শিশু)",Rongeen TV
+https://server.thelegitpro.in/rongeentv/rongeentv/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="42" tvg-name="Duronto TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/duronto-tv.jpg" group-title="Kids(শিশু)",Duronto TV
+https://zoomoo-samsungau.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="41" tvg-name="Nick" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/nick.png" group-title="Kids(শিশু)",Nick
+http://103.179.25.147:8181/nick/index.m3u8
+#EXTINF:-1 tvg-id="40" tvg-name="Cartoon Network" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/cartoon-network.jpg" group-title="Kids(শিশু)",Cartoon Network
+https://server.zillarbarta.com/zbcatun/video.m3u8
+#EXTINF:-1 tvg-id="39" tvg-name="POGO" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/pogo.jpg" group-title="Kids(শিশু)",POGO
+http://172.16.29.34:80/play/JmU-3pCgErAiWP5dU8MsA6jLJs-x9JkMCsHpFukynww/m3u8
+#EXTINF:-1 tvg-id="38" tvg-name="SONIC BANGLA" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sonic-bangla.jpg" group-title="Kids(শিশু)",SONIC BANGLA
+http://extraott-iptv.com:88/live/0229477349/8104258135/400159784.m3u8
+#EXTINF:-1 tvg-id="37" tvg-name="SONY YAY" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-yay.png" group-title="Kids(শিশু)",SONY YAY
+http://103.179.25.147:8181/Sony_yay/index.m3u8
+#EXTINF:-1 tvg-id="36" tvg-name="Disney Channel" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/disney-channel.png" group-title="Kids(শিশু)",Disney Channel
+https://zoomoo-samsungau.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="35" tvg-name="Hungama TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/hungama-tv.png" group-title="Kids(শিশু)",Hungama TV
+http://125.209.88.166:45793/BRN/KidsZoneHD.stream/playlist.m3u8
+#EXTINF:-1 tvg-id="34" tvg-name="Kids Creaton" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/kids-creaton.jpg" group-title="Kids(শিশু)",Kids Creaton
+https://zoomoo-samsungau.amagi.tv/playlist720p.m3u8
+#EXTINF:-1 tvg-id="33" tvg-name="Haari Kids" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/haari-kids.png" group-title="Kids(শিশু)",Haari Kids
+https://streams.spacetoon.com/live/stchannel/smil:livesmil.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="32" tvg-name="Gubbare" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/gubbare.jpg" group-title="Kids(শিশু)",Gubbare
+https://cc-4bhi5osabejc9.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-4bhi5osabejc9/junglebook.m3u8
+#EXTINF:-1 tvg-id="31" tvg-name="Discovery Kid" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/discovery-kid.jpeg" group-title="Kids(শিশু)",Discovery Kid
+https://live20.bozztv.com/giatvplayout7/giatv-209633/index.m3u8
+#EXTINF:-1 tvg-id="186" tvg-name="Investigation Discovery" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/investigation-discovery.png" group-title="Documentary(তথ্যমূলক)",Investigation Discovery
+https://sports.padmaflix.net/tango/live.php?id=6789650f5629&e=.m3u8
+#EXTINF:-1 tvg-id="185" tvg-name="Discovery Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/discovery-bangla.png" group-title="Documentary(তথ্যমূলক)",Discovery Bangla
+http://103.179.25.147:8181/discovery_ban/index.m3u8
+#EXTINF:-1 tvg-id="184" tvg-name="Discovery Turbo" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/discovery-turbo.jpg" group-title="Documentary(তথ্যমূলক)",Discovery Turbo
+https://sports.padmaflix.net/tango/live.php?id=a051de5ade20&e=.m3u8
+#EXTINF:-1 tvg-id="63" tvg-name="History TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/history-tv.jpg" group-title="Documentary(তথ্যমূলক)",History TV
+https://3b265effb709412a8b5988c98756fda0.mediatailor.us-east-1.amazonaws.com/v1/master/44f73ba4d03e9607dcd9bebdcb8494d86964f1d8/Samsung-in_GoUSATV/playlist.m3u8?ads.wurl_channel=535&ads.wurl_name=GoUSATV&ads.coppa=0&ads.psid=%7BPSID%7D&ads.targetopt=%7BTARGETOPT%7D&ads.app_domain=%7BAPP_DOMAIN%7D&ads.app_name=%7BAPP_NAME%7D
+#EXTINF:-1 tvg-id="55" tvg-name="TLC" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/tlc.jpeg" group-title="Documentary(তথ্যমূলক)",TLC
+http://aria.padmaflix.net/tango/watch.php?id=31&vtoken=&format=.m3u8
+#EXTINF:-1 tvg-id="54" tvg-name="Xplore English" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/xplore-english.png" group-title="Documentary(তথ্যমূলক)",Xplore English
+https://jmp2.uk/SamsungTVPlus/INBC2800020QX.m3u8
+#EXTINF:-1 tvg-id="53" tvg-name="Animal planet" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/animal-planet.jpg" group-title="Documentary(তথ্যমূলক)",Animal planet
+http://103.179.25.147:8181/animal_planet/index.m3u8
+#EXTINF:-1 tvg-id="52" tvg-name="National Geographic" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/national-geographic.png" group-title="Documentary(তথ্যমূলক)",National Geographic
+http://185.189.225.157/NationalGeographic/index.m3u8
+#EXTINF:-1 tvg-id="51" tvg-name="Sony BBC EARTH" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sony-bbc-earth.png" group-title="Documentary(তথ্যমূলক)",Sony BBC EARTH
+http://172.16.29.34:80/play/JmU-3pCgErAiWP5dU8MsA0HmZbyPChrarr0v1zTcBOA/m3u8
+#EXTINF:-1 tvg-id="49" tvg-name="Travel XP" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/travel-xp.png" group-title="Documentary(তথ্যমূলক)",Travel XP
+https://travelxp-travelxp-1-eu.rakuten.wurl.tv/2000.m3u8
+#EXTINF:-1 tvg-id="48" tvg-name="Food food" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/food-food.jpg" group-title="Documentary(তথ্যমূলক)",Food food
+http://fl1.moveonjoy.com/FOOD_NETWORK/index.m3u8
+#EXTINF:-1 tvg-id="47" tvg-name="Wild Earth" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/wild-earth.png" group-title="Documentary(তথ্যমূলক)",Wild Earth
+https://wildearth-plex.amagi.tv/masterR1080p.m3u8
+#EXTINF:-1 tvg-id="91" tvg-name="9XM Jalwa" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/k-pop-tv.jpeg" group-title="Music(সঙ্গীত)",9XM Jalwa
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/9x-jalwa/master.m3u8
+#EXTINF:-1 tvg-id="90" tvg-name="9XM" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/9xm.png" group-title="Music(সঙ্গীত)",9XM
+https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/9xm/9f1a3d57-4134-4f4c-95ea-2cb142ac63f8/0.m3u8
+#EXTINF:-1 tvg-id="89" tvg-name="Show Box" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/show-box.jpeg" group-title="Music(সঙ্গীত)",Show Box
+https://server.zillarbarta.com/zbmusic/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-id="88" tvg-name="Zoom" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/zoom.png" group-title="Music(সঙ্গীত)",Zoom
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/zoom-tv/master.m3u8
+#EXTINF:-1 tvg-id="87" tvg-name="Boogly Bollywood" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/boogly-bollywood.jpeg" group-title="Music(সঙ্গীত)",Boogly Bollywood
+https://livecdn.live247stream.com/joomusic/tv/playlist.m3u8
+#EXTINF:-1 tvg-id="86" tvg-name="Sangeet Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sangeet-bangla.jpg" group-title="Music(সঙ্গীত)",Sangeet Bangla
+https://hls.sunmusic.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="85" tvg-name="Music India" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/music-india.jpeg" group-title="Music(সঙ্গীত)",Music India
+https://cdn-2.pishow.tv/live/226/226_1.m3u8
+#EXTINF:-1 tvg-id="84" tvg-name="MTV BEATS" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/mtv-beats.jpg" group-title="Music(সঙ্গীত)",MTV BEATS
+https://sabliveyupp.akamaized.net/mastii/mastii_poc_800k.m3u8
+#EXTINF:-1 tvg-id="83" tvg-name="B4U Music" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/b4u-music.jpeg" group-title="Music(সঙ্গীত)",B4U Music
+https://d3kdywbtdfbp9z.cloudfront.net/v1/manifest/93ce20f0f52760bf38be911ff4c91ed02aa2fd92/dff423e0-3c82-46d6-9ecb-3baa96b5694a/4598c408-0e38-488c-9b64-fc845d1ea2b6/0.m3u8
+#EXTINF:-1 tvg-id="82" tvg-name="ATN MUSIC" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/atn-music.png" group-title="Music(সঙ্গীত)",ATN MUSIC
+https://livess.jagobd.com.bd/c3VydmVyX8RpbEU9Mi8xNy8yMDE0GIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PTOmdFsaWRtaW51aiPhnPTI2/atnmusic.stream/chunks.m3u8
+#EXTINF:-1 tvg-id="81" tvg-name="Mastii" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/mastii.jpg" group-title="Music(সঙ্গীত)",Mastii
+https://sabliveyupp.akamaized.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/sablive_https/mastii/playlist.m3u8
+#EXTINF:-1 tvg-id="80" tvg-name="MB Music" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/mb-music.png" group-title="Music(সঙ্গীত)",MB Music
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/desi-tv/master.m3u8?ads.rnd=__CACHE_BUSTER__&ads.env_i=__env.i__&ads.env_u=__env.u__&ads.name=DistroTV&ads.bundle=__APP_BUNDLE__&ads.storeurl=__STORE_URL__&ads.appCategory=__APP_CATEGORY__&ads.app_version=__APP_VERSION__&ads.width=__WIDTH__&ads.height=__HEIGHT__&ads.deviceId=__DEVICE_ID__&ads.deviceDNT=__LIMIT_AD_TRACKING__&ads.gdpr=__IS_GDPR__&ads.us_privacy=__IS_CCPA__&ads.aid=__ADVERTISING_ID__&ads.deviceMake=__DEVICE__&ads.deviceIdType=__DEVICE_ID_TYPE__&ads.deviceConnectionType=__DEVICE_CONNECTION_TYPE__&ads.client_ip=__CLIENT_IP__&ads.geo=__GEO_COUNTRY__&ads.lat=__LATITUDE__&ads.long=__LONGITUDE__&ads.dma=__GEO_DMA__&ads.geoType=__GEO_TYPE__&ads.contentid=23014&ads.content_duration=18000&ads.epis
+#EXTINF:-1 tvg-id="191" tvg-name="Sunnah TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/sunnah-tv.png" group-title="Religion(ধর্ম)",Sunnah TV
+https://5dd3981940faa.streamlock.net/mercytv/mercytv/playlist.m3u8
+#EXTINF:-1 tvg-id="60" tvg-name="Makkah Tv" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/makkah-tv.jpeg" group-title="Religion(ধর্ম)",Makkah Tv
+https://cdn.bestream.io:19360/elfaro1/elfaro1.m3u8
+#EXTINF:-1 tvg-id="59" tvg-name="Peace TV Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/peace-tv.jpeg" group-title="Religion(ধর্ম)",Peace TV Bangla
+https://dzkyvlfyge.erbvr.com/PeaceTvBangla/tracks-v3a1/mono.m3u8
+#EXTINF:-1 tvg-id="57" tvg-name="Iqra Bangla" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/iqra-bangla.jpg" group-title="Religion(ধর্ম)",Iqra Bangla
+https://cdn5.iqsat.net/iqb/f0c1abab1c44d5f01879991c979a6821.sdp/playlist.m3u8
+#EXTINF:-1 tvg-id="56" tvg-name="Deen TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/deen-tv.jpg" group-title="Religion(ধর্ম)",Deen TV
+https://ap02.iqplay.tv:8082/iqb8002/d33ntv/playlist.m3u8
+#EXTINF:-1 tvg-id="197" tvg-name="Unbeaten TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/unbeaten-tv.png" group-title="Other Sports(অন্য খেলা)",Unbeaten TV
+https://unbeaten-tcl.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="189" tvg-name="EURO SPORTS" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/euro-sports.png" group-title="Other Sports(অন্য খেলা)",EURO SPORTS
+http://iptv-hls.idc.md:8200/hls/260/live1.m3u8
+#EXTINF:-1 tvg-id="135" tvg-name="EDGE SPORTS" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/edge-sports.jpg" group-title="Other Sports(অন্য খেলা)",EDGE SPORTS
+https://edgesports-sportstribal.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="134" tvg-name="Tennis Channel" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/tennis-channel.png" group-title="Other Sports(অন্য খেলা)",Tennis Channel
+https://tennischannel-int-samsunguk.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="132" tvg-name="Fight Sports" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/fight-sports.png" group-title="Other Sports(অন্য খেলা)",Fight Sports
+http://210.210.155.37/session/4efa2f86-9eeb-11ed-8276-b505992865bf/dr9445/h/h05/01.m3u8
+#EXTINF:-1 tvg-id="129" tvg-name="RedBull TV" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/redbull-tv.png" group-title="Other Sports(অন্য খেলা)",RedBull TV
+https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master_6660.m3u8
+#EXTINF:-1 tvg-id="128" tvg-name="TV MAX" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/tv-max.png" group-title="Other Sports(অন্য খেলা)",TV MAX
+http://cdn20.liveonlineservices.com/hls/eye95tv.m3u8
+#EXTINF:-1 tvg-id="127" tvg-name="J Sports 1" tvg-logo="http://app.allconnectonlinebd.com/padmax/uploads/tv_image/sm/j-sports-1.png" group-title="Other Sports(অন্য খেলা)",J Sports 1
+http://ott-cdn.ucom.am/s4/04.m3u8
